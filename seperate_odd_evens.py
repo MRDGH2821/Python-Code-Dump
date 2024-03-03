@@ -1,6 +1,6 @@
 from random import randint
-even = []
-odd = []
+even: list['int'] = []
+odd: list['int'] = []
 random_numbers = [randint(1, 10) for _ in range(5)]
 for x in random_numbers:
     if x % 2 == 0:

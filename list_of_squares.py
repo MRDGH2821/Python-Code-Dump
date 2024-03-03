@@ -1,4 +1,4 @@
-def sq_list(j):
+def sq_list(j: int):
     squared_list = [g**2 for g in range(j + 1)]
     return squared_list
 

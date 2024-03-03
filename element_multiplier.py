@@ -3,7 +3,7 @@ random_numbers = [randint(1, 50) for _ in range(10)]
 print(random_numbers)
 
 
-def multiply_list_elements(g):
+def multiply_list_elements(g: list['int']):
     prd = 1
     for d in g:
         prd = prd * d

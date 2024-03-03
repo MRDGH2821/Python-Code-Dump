@@ -1,4 +1,4 @@
-def armstrong(x):
+def armstrong(x: int):
     sum = 0
     t = x
     while t > 0:

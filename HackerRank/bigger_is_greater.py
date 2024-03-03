@@ -7,7 +7,7 @@ import os
 # Complete the biggerIsGreater function below.
 
 
-def biggerIsGreater(w):
+def biggerIsGreater(w: str):
     newWrd = list(w[::-1])
     i = len(newWrd) - 2
     new = ""
