@@ -239,6 +239,17 @@ files = [
 ]
 
 [[package]]
+name = "pyopengl"
+version = "3.1.7"
+description = "Standard OpenGL bindings for Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "PyOpenGL-3.1.7-py3-none-any.whl", hash = "sha256:a6ab19cf290df6101aaf7470843a9c46207789855746399d0af92521a0a92b7a"},
+    {file = "PyOpenGL-3.1.7.tar.gz", hash = "sha256:eef31a3888e6984fd4d8e6c9961b184c9813ca82604d37fe3da80eb000a76c86"},
+]
+
+[[package]]
 name = "ruff"
 version = "0.3.0"
 description = "An extremely fast Python linter and code formatter, written in Rust."
@@ -305,4 +316,4 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8.10"
-content-hash = "9be703d98840e5ea79386afc068795e84ac76fb48ee124bc7b32616dab7e8713"
+content-hash = "fd77eb632c29bf5785f41f77b113ccb52f410de8e408b25f62508cb9f249754e"
