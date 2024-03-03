@@ -5,6 +5,8 @@
         "charliermarsh.ruff",
         "donjayamanne.python-environment-manager",
         "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "MichaelCurrin.auto-commit-msg",
         "ms-python.autopep8",
         "ms-python.debugpy",
         "ms-python.flake8",
@@ -14,13 +16,14 @@
         "njpwerner.autodocstring",
         "redhat.vscode-yaml",
         "spmeesseman.vscode-taskexplorer",
+        "streetsidesoftware.code-spell-checker",
         "tamasfe.even-better-toml"
       ]
     }
   },
   "features": {
     "ghcr.io/devcontainers-contrib/features/npm-package": {
-      "package": "mega-linter-runner"
+      "package": "mega-linter-runner commitlint"
     },
     "ghcr.io/devcontainers-contrib/features/poetry": {},
     "ghcr.io/devcontainers/features/docker-in-docker": {}
