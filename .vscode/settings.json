@@ -1,12 +1,15 @@
 {
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[python]": {
     "editor.defaultFormatter": "ms-python.autopep8"
   },
-  "python.analysis.typeCheckingMode": "strict",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "python.analysis.autoImportCompletions": true,
   "python.analysis.autoFormatStrings": true,
+  "python.analysis.autoImportCompletions": true,
   "python.analysis.completeFunctionParens": true,
+  "python.analysis.typeCheckingMode": "strict",
   "python.createEnvironment.trigger": "prompt",
   "python.missingPackage.severity": "Warning",
   "python.terminal.activateEnvInCurrentTerminal": true

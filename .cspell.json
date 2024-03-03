@@ -1,4 +1,6 @@
 {
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/packages/cspell-types/cspell.schema.json",
+  "allowCompoundWords": true,
   "ignorePaths": [
     "**/node_modules/**",
     "**/vscode-extension/**",
@@ -11,6 +13,8 @@
   ],
   "language": "en,en-GB,en-IN",
   "noConfigSearch": true,
+  "useGitignore": true,
+  "version": "0.2",
   "words": [
     "aeiou",
     "dpcpy",
@@ -20,6 +24,5 @@
     "tearoff",
     "textvariable",
     "venv"
-  ],
-  "version": "0.2"
+  ]
 }
