@@ -2,7 +2,7 @@
 name = "Python-Code-Dump"
 version = "0.0.0"
 description = "A collection of Python code snippets and scripts"
-dependencies = ["pygame", "easygui"]
+dependencies = ["pygame", "easygui", "openpyxl", "xlrd"]
 
 [tool.poetry]
 name = "python-code-dump"
@@ -17,6 +17,8 @@ package-mode = false
 python = ">=3.8"
 pygame = "^2.5.2"
 easygui = "^0.98.3"
+openpyxl = "^3.1.2"
+xlrd = "^2.0.1"
 
 [build-system]
 requires = ["poetry-core"]
