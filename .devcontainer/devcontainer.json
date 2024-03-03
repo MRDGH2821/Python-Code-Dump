@@ -25,7 +25,7 @@
     "ghcr.io/devcontainers-contrib/features/npm-package": {
       "package": "mega-linter-runner"
     },
-    "ghcr.io/devcontainers-contrib/features/pdm": {},
+    "ghcr.io/devcontainers-contrib/features/poetry": {},
     "ghcr.io/devcontainers-contrib/features/ruff": {},
     "ghcr.io/devcontainers/features/docker-in-docker": {}
   },

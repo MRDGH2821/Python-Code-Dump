@@ -3,3 +3,21 @@ name = "Python-Code-Dump"
 version = "0.0.0"
 description = "A collection of Python code snippets and scripts"
 dependencies = ["pygame", "easygui"]
+
+[tool.poetry]
+name = "python-code-dump"
+version = "0.0.0"
+description = "A collection of Python code snippets and scripts"
+authors = ["MRDGH2821 <ask.mrdgh2821@outlook.com>"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+pygame = "^2.5.2"
+easygui = "^0.98.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
