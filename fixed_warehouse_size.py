@@ -12,7 +12,8 @@ class Product:
             Product._count += 1
         else:
             raise UserLimitExceeded(
-                f"Product {name} cannot be created Maximum {Limit.get_limit()} products allowed."
+                f"Product {name} cannot be created Maximum {
+                    Limit.get_limit()} products allowed."
             )
 
     def __del__(self):
