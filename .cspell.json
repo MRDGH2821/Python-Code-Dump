@@ -9,8 +9,17 @@
     "package-lock.json",
     "report"
   ],
-  "language": "en",
+  "language": "en,en-GB,en-IN",
   "noConfigSearch": true,
-  "words": ["megalinter", "oxsecurity"],
+  "words": [
+    "aeiou",
+    "dpcpy",
+    "megalinter",
+    "oxsecurity",
+    "pady",
+    "tearoff",
+    "textvariable",
+    "venv"
+  ],
   "version": "0.2"
 }
