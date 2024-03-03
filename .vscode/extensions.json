@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "charliermarsh.ruff",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "ms-python.autopep8",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "njpwerner.autodocstring",
+    "tamasfe.even-better-toml"
+  ]
+}
