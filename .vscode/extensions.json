@@ -4,7 +4,6 @@
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
     "joshbolduc.commitlint",
-    "ms-pyright.pyright",
     "ms-python.autopep8",
     "ms-python.flake8",
     "ms-python.isort",
