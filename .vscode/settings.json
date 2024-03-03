@@ -5,6 +5,9 @@
   "[python]": {
     "editor.defaultFormatter": "ms-python.autopep8"
   },
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "python.analysis.autoFormatStrings": true,
   "python.analysis.autoImportCompletions": true,
