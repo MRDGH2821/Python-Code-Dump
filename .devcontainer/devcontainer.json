@@ -30,7 +30,7 @@
   },
   "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
   "name": "Python 3",
-  "postAttachCommand": {
+  "postCreateCommand": {
     "npm dependencies": "npm i -g commitlint",
     "python dependencies": "poetry install"
   }
