@@ -4,13 +4,15 @@ Simpson College Computer Science
 http://programarcadegames.com/
 http://simpson.edu/computer-science/
 """
+
 import pygame
+
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
 
 class Player(pygame.sprite.Sprite):
-    """ The class is the player-controlled sprite. """
+    """The class is the player-controlled sprite."""
 
     def __init__(self, x, y):
         """Constructor function"""
@@ -25,10 +27,11 @@ class Player(pygame.sprite.Sprite):
         self.rect.y = y
         self.change_x = 0
         self.change_y = 0
+
     # Find a new position for the player
 
     def update(self):
-        """ Change the location of the player"""
+        """Change the location of the player"""
         self.rect.x += self.change_y
         self.rect.y += self.change_x
 
@@ -38,7 +41,7 @@ pygame.init()
 # Create an 800x600 sized screen
 screen = pygame.display.set_mode([800, 600])
 # Set the title of the window
-pygame.display.set_caption('Move Sprite With Keyboard')
+pygame.display.set_caption("Move Sprite With Keyboard")
 # Create the player paddle object
 player = Player(50, 50)
 all_sprites_list = pygame.sprite.Group()

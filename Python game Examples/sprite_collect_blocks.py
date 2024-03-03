@@ -6,8 +6,11 @@ http://programarcadegames.com/
 http://simpson.edu/computer-science/
 Explanation video: http://youtu.be/4W2AqUetBi4
 """
-import pygame
+
 import random
+
+import pygame
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -21,8 +24,8 @@ class Block(pygame.sprite.Sprite):
     """
 
     def __init__(self, color, width, height):
-        """ Constructor. Pass in the color of the block,
-        and its x and y position. """
+        """Constructor. Pass in the color of the block,
+        and its x and y position."""
         # Call the parent class (Sprite) constructor
         super().__init__()
         # Create an image of the block, and fill it with a color.

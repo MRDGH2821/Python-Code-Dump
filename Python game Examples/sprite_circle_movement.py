@@ -5,9 +5,12 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
-import pygame
-import random
+
 import math
+import random
+
+import pygame
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -15,10 +18,10 @@ RED = (255, 0, 0)
 
 
 class Block(pygame.sprite.Sprite):
-    """ This class represents the ball that moves in a circle. """
+    """This class represents the ball that moves in a circle."""
 
     def __init__(self, color, width, height):
-        """ Constructor that create's the ball's image. """
+        """Constructor that create's the ball's image."""
         super().__init__()
         self.image = pygame.Surface([width, height])
         self.image.fill(color)
@@ -34,7 +37,7 @@ class Block(pygame.sprite.Sprite):
         self.speed = 0.05
 
     def update(self):
-        """ Update the ball's position. """
+        """Update the ball's position."""
         # Calculate a new x, y
         self.rect.x = self.radius * math.sin(self.angle) + self.center_x
         self.rect.y = self.radius * math.cos(self.angle) + self.center_y
@@ -43,17 +46,17 @@ class Block(pygame.sprite.Sprite):
 
 
 class Player(pygame.sprite.Sprite):
-    """ Class to represent the player. """
+    """Class to represent the player."""
 
     def __init__(self, color, width, height):
-        """ Create the player image. """
+        """Create the player image."""
         super().__init__()
         self.image = pygame.Surface([width, height])
         self.image.fill(color)
         self.rect = self.image.get_rect()
 
     def update(self):
-        """Set the user to be where the mouse is. """
+        """Set the user to be where the mouse is."""
         pos = pygame.mouse.get_pos()
         self.rect.x = pos[0]
         self.rect.y = pos[1]

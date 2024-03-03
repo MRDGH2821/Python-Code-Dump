@@ -8,8 +8,11 @@ http://simpson.edu/computer-science/
 
 Explanation video: http://youtu.be/iwLj7iJCFQM
 """
-import pygame
+
 import random
+
+import pygame
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -23,8 +26,8 @@ class Block(pygame.sprite.Sprite):
     """
 
     def __init__(self, color, width, height):
-        """ Constructor. Pass in the color of the block,
-        and its x and y position. """
+        """Constructor. Pass in the color of the block,
+        and its x and y position."""
         # Call the parent class (Sprite) constructor
         super().__init__()
         # Create an image of the block, and fill it with a color.
@@ -39,13 +42,14 @@ class Block(pygame.sprite.Sprite):
 
 
 class Player(Block):
-    """ This class represents the player. It derives from block and thus gets the same
-    ___init___ method we defined above. """
+    """This class represents the player. It derives from block and thus gets the same
+    ___init___ method we defined above."""
+
     # List of all the blocks we are carrying
     carry_block_list = []
 
     def update(self):
-        """ Method called when updating a sprite. """
+        """Method called when updating a sprite."""
         # Get the current mouse position. This returns the position
         # as a list of two numbers.
         pos = pygame.mouse.get_pos()
@@ -101,8 +105,7 @@ while not done:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             # When the mouse button is pressed, see if we are in contact with
             # other sprites:
-            blocks_hit_list = pygame.sprite.spritecollide(
-                player, block_list, False)
+            blocks_hit_list = pygame.sprite.spritecollide(player, block_list, False)
             # Set the list of blocks we are in contact with as the list of
             # blocks being carried.
             player.carry_block_list = blocks_hit_list

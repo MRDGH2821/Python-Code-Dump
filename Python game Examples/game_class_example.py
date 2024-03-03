@@ -6,8 +6,11 @@ http://programarcadegames.com/
 http://simpson.edu/computer-science/
 Explanation video: http://youtu.be/O4Y5KrNgP_c
 """
-import pygame
+
 import random
+
+import pygame
+
 # --- Global constants ---
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -19,30 +22,30 @@ SCREEN_HEIGHT = 500
 
 
 class Block(pygame.sprite.Sprite):
-    """ This class represents a simple block the player collects. """
+    """This class represents a simple block the player collects."""
 
     def __init__(self):
-        """ Constructor, create the image of the block. """
+        """Constructor, create the image of the block."""
         super().__init__()
         self.image = pygame.Surface([20, 20])
         self.image.fill(BLACK)
         self.rect = self.image.get_rect()
 
     def reset_pos(self):
-        """ Called when the block is 'collected' or falls off
-            the screen. """
+        """Called when the block is 'collected' or falls off
+        the screen."""
         self.rect.y = random.randrange(-300, -20)
         self.rect.x = random.randrange(SCREEN_WIDTH)
 
     def update(self):
-        """ Automatically called when we need to move the block. """
+        """Automatically called when we need to move the block."""
         self.rect.y += 1
         if self.rect.y > SCREEN_HEIGHT + self.rect.height:
             self.reset_pos()
 
 
 class Player(pygame.sprite.Sprite):
-    """ This class represents the player. """
+    """This class represents the player."""
 
     def __init__(self):
         super().__init__()
@@ -51,16 +54,17 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
     def update(self):
-        """ Update the player location. """
+        """Update the player location."""
         pos = pygame.mouse.get_pos()
         self.rect.x = pos[0]
         self.rect.y = pos[1]
 
 
 class Game(object):
-    """ This class represents an instance of the game. If we need to
-        reset the game we'd just need to create a new instance of this
-        class. """
+    """This class represents an instance of the game. If we need to
+    reset the game we'd just need to create a new instance of this
+    class."""
+
     # --- Class attributes.
     # In this case, all the data we need
     # to run our game.
@@ -92,8 +96,8 @@ class Game(object):
         self.all_sprites_list.add(self.player)
 
     def process_events(self):
-        """ Process all of the events. Return a "True" if we need
-            to close the window. """
+        """Process all of the events. Return a "True" if we need
+        to close the window."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return True
@@ -112,7 +116,8 @@ class Game(object):
             self.all_sprites_list.update()
             # See if the player block has collided with anything.
             blocks_hit_list = pygame.sprite.spritecollide(
-                self.player, self.block_list, True)
+                self.player, self.block_list, True
+            )
             # Check the list of collisions.
             for block in blocks_hit_list:
                 self.score += 1
@@ -122,7 +127,7 @@ class Game(object):
                 self.game_over = True
 
     def display_frame(self, screen):
-        """ Display everything to the screen for the game. """
+        """Display everything to the screen for the game."""
         screen.fill(WHITE)
         if self.game_over:
             # font = pygame.font.Font("Serif", 25)
@@ -137,7 +142,7 @@ class Game(object):
 
 
 def main():
-    """ Main program function. """
+    """Main program function."""
     # Initialize Pygame and set up the window
     pygame.init()
     size = [SCREEN_WIDTH, SCREEN_HEIGHT]

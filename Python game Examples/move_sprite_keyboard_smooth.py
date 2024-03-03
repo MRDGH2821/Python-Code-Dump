@@ -4,13 +4,16 @@ Simpson College Computer Science
 http://programarcadegames.com/
 http://simpson.edu/computer-science/
 """
+
 import pygame
+
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
 
 class Player(pygame.sprite.Sprite):
-    """ The class is the player-controlled sprite. """
+    """The class is the player-controlled sprite."""
+
     # -- Methods
 
     def __init__(self, x, y):
@@ -30,12 +33,12 @@ class Player(pygame.sprite.Sprite):
         self.change_y = 0
 
     def changespeed(self, x, y):
-        """ Change the speed of the player"""
+        """Change the speed of the player"""
         self.change_x += x
         self.change_y += y
 
     def update(self):
-        """ Find a new position for the player"""
+        """Find a new position for the player"""
         self.rect.x += self.change_x
         self.rect.y += self.change_y
 
@@ -45,7 +48,7 @@ pygame.init()
 # Create an 800x600 sized screen
 screen = pygame.display.set_mode([800, 600])
 # Set the title of the window
-pygame.display.set_caption('Test')
+pygame.display.set_caption("Test")
 # Create the player object
 player = Player(50, 50)
 all_sprites_list = pygame.sprite.Group()

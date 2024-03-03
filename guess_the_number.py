@@ -1,4 +1,5 @@
 from random import randint
+
 x = randint(1, 10)
 a = 0
 b = 0

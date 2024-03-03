@@ -6,12 +6,13 @@
  Explanation video: http://youtu.be/_XdrKSDmzqA
 
 """
+
 # Import a library of functions called 'pygame'
 import pygame
 
 
 def draw_snowman(screen, x, y):
-    """ --- Function for a snowman ---
+    """--- Function for a snowman ---
     Define a function that will draw a snowman at a certain location.
     """
     pygame.draw.ellipse(screen, WHITE, [35 + x, 0 + y, 25, 25])

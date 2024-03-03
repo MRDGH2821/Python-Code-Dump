@@ -6,8 +6,10 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
+
 # Import a library of functions called 'pygame'
 import pygame
+
 # Initialize the game engine
 pygame.init()
 # Define some colors
@@ -39,8 +41,7 @@ while not done:
     # Draw on the screen several lines from (0,10) to (100,110)
     # 5 pixels wide using a loop
     for y_offset in range(0, 100, 10):
-        pygame.draw.line(
-            screen, RED, [0, 10 + y_offset], [100, 110 + y_offset], 5)
+        pygame.draw.line(screen, RED, [0, 10 + y_offset], [100, 110 + y_offset], 5)
     # Draw a rectangle
     pygame.draw.rect(screen, BLACK, [20, 20, 250, 100], 2)
     # Draw an ellipse, using a rectangle as the outside boundaries
@@ -54,7 +55,7 @@ while not done:
     # This draws a triangle using the polygon command
     pygame.draw.polygon(screen, BLACK, [[100, 100], [0, 200], [200, 200]], 5)
     # Select the font to use, size, bold, italics
-    font = pygame.font.SysFont('Calibri', 25, True, False)
+    font = pygame.font.SysFont("Calibri", 25, True, False)
     # Render the text. "True" means anti-aliased text.
     # Black is the color. This creates an image of the
     # letters, but does not put it on the screen

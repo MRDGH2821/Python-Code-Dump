@@ -5,9 +5,12 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
+
+import math
+
 # Import a library of functions called 'pygame'
 import pygame
-import math
+
 # Initialize the game engine
 pygame.init()
 # Define the colors we will use in RGB format
@@ -43,7 +46,7 @@ while done is False:
     # end spot
     pygame.draw.line(screen, green, [145, 145], [x, y], 2)
     # Increase the angle by 0.05 radians
-    angle = angle + .05
+    angle = angle + 0.05
     # If we have done a full sweep, reset the angle to 0
     pi = 3.141592653
     if angle > 2 * pi:

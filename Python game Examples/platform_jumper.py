@@ -14,7 +14,9 @@ http://programarcadegames.com/python_examples/f.php?file=platform_scroller.py
 http://programarcadegames.com/python_examples/f.php?file=platform_moving.py
 http://programarcadegames.com/python_examples/sprite_sheets/
 """
+
 import pygame
+
 # Global constants
 # Colors
 BLACK = (0, 0, 0)
@@ -28,12 +30,13 @@ SCREEN_HEIGHT = 600
 
 
 class Player(pygame.sprite.Sprite):
-    """ This class represents the bar at the bottom that the player
-        controls. """
+    """This class represents the bar at the bottom that the player
+    controls."""
+
     # -- Methods
 
     def __init__(self):
-        """ Constructor function """
+        """Constructor function"""
         # Call the parent's constructor
         super().__init__()
         # Create an image of the block, and fill it with a color.
@@ -51,14 +54,15 @@ class Player(pygame.sprite.Sprite):
         self.level = None
 
     def update(self):
-        """ Move the player. """
+        """Move the player."""
         # Gravity
         self.calc_grav()
         # Move left/right
         self.rect.x += self.change_x
         # See if we hit anything
         block_hit_list = pygame.sprite.spritecollide(
-            self, self.level.platform_list, False)
+            self, self.level.platform_list, False
+        )
         for block in block_hit_list:
             # If we are moving right,
             # set our right side to the left side of the item we hit
@@ -71,7 +75,8 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += self.change_y
         # Check and see if we hit anything
         block_hit_list = pygame.sprite.spritecollide(
-            self, self.level.platform_list, False)
+            self, self.level.platform_list, False
+        )
         for block in block_hit_list:
             # Reset our position based on the top/bottom of the object.
             if self.change_y > 0:
@@ -82,50 +87,52 @@ class Player(pygame.sprite.Sprite):
             self.change_y = 0
 
     def calc_grav(self):
-        """ Calculate effect of gravity. """
+        """Calculate effect of gravity."""
         if self.change_y == 0:
             self.change_y = 1
         else:
-            self.change_y += .35
+            self.change_y += 0.35
         # See if we are on the ground.
         if self.rect.y >= SCREEN_HEIGHT - self.rect.height and self.change_y >= 0:
             self.change_y = 0
             self.rect.y = SCREEN_HEIGHT - self.rect.height
 
     def jump(self):
-        """ Called when user hits 'jump' button. """
+        """Called when user hits 'jump' button."""
         # move down a bit and see if there is a platform below us.
         # Move down 2 pixels because it doesn't work well if we only move down 1
         # when working with a platform moving down.
         self.rect.y += 2
         platform_hit_list = pygame.sprite.spritecollide(
-            self, self.level.platform_list, False)
+            self, self.level.platform_list, False
+        )
         self.rect.y -= 2
         # If it is ok to jump, set our speed upwards
         if len(platform_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
             self.change_y = -10
+
     # Player-controlled movement:
 
     def go_left(self):
-        """ Called when the user hits the left arrow. """
+        """Called when the user hits the left arrow."""
         self.change_x = -6
 
     def go_right(self):
-        """ Called when the user hits the right arrow. """
+        """Called when the user hits the right arrow."""
         self.change_x = 6
 
     def stop(self):
-        """ Called when the user lets off the keyboard. """
+        """Called when the user lets off the keyboard."""
         self.change_x = 0
 
 
 class Platform(pygame.sprite.Sprite):
-    """ Platform the user can jump on """
+    """Platform the user can jump on"""
 
     def __init__(self, width, height):
-        """ Platform constructor. Assumes constructed with user passing in
-            an array of 5 numbers like what's defined at the top of this
-            code. """
+        """Platform constructor. Assumes constructed with user passing in
+        an array of 5 numbers like what's defined at the top of this
+        code."""
         super().__init__()
         self.image = pygame.Surface([width, height])
         self.image.fill(GREEN)
@@ -133,9 +140,10 @@ class Platform(pygame.sprite.Sprite):
 
 
 class Level(object):
-    """ This is a generic super-class used to define a level.
-        Create a child class for each level with level-specific
-        info. """
+    """This is a generic super-class used to define a level.
+    Create a child class for each level with level-specific
+    info."""
+
     # Lists of sprites used in all levels. Add or remove
     # lists as needed for your game.
     platform_list = None
@@ -144,40 +152,44 @@ class Level(object):
     background = None
 
     def __init__(self, player):
-        """ Constructor. Pass in a handle to player. Needed for when moving platforms
-            collide with the player. """
+        """Constructor. Pass in a handle to player. Needed for when moving platforms
+        collide with the player."""
         self.platform_list = pygame.sprite.Group()
         self.enemy_list = pygame.sprite.Group()
         self.player = player
+
     # Update everythign on this level
 
     def update(self):
-        """ Update everything in this level."""
+        """Update everything in this level."""
         self.platform_list.update()
         self.enemy_list.update()
 
     def draw(self, screen):
-        """ Draw everything on this level. """
+        """Draw everything on this level."""
         # Draw the background
         screen.fill(BLUE)
         # Draw all the sprite lists that we have
         self.platform_list.draw(screen)
         self.enemy_list.draw(screen)
+
+
 # Create platforms for the level
 
 
 class Level_01(Level):
-    """ Definition for level 1. """
+    """Definition for level 1."""
 
     def __init__(self, player):
-        """ Create level 1. """
+        """Create level 1."""
         # Call the parent constructor
         Level.__init__(self, player)
         # Array with width, height, x, and y of platform
-        level = [[210, 70, 500, 500],
-                 [210, 70, 200, 400],
-                 [210, 70, 600, 300],
-                 ]
+        level = [
+            [210, 70, 500, 500],
+            [210, 70, 200, 400],
+            [210, 70, 600, 300],
+        ]
         # Go through the array above and add platforms
         for platform in level:
             block = Platform(platform[0], platform[1])
@@ -188,7 +200,7 @@ class Level_01(Level):
 
 
 def main():
-    """ Main Program """
+    """Main Program"""
     pygame.init()
     # Set the height and width of the screen
     size = [SCREEN_WIDTH, SCREEN_HEIGHT]

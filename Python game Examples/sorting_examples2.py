@@ -3,6 +3,7 @@
 # http://programarcadegames.com/
 # http://simpson.edu/computer-science/
 import random
+
 # The selection sort
 
 
@@ -31,18 +32,16 @@ def insertion_sort(list):
         i = j - 1
         while (i >= 0) and (list[i] > key):
             list[i + 1] = list[i]
-            print(
-                "node%d:f%d -> node%d:f%d [color=blue];" %
-                (j - 1, i, j, i + 1))
+            print("node%d:f%d -> node%d:f%d [color=blue];" % (j - 1, i, j, i + 1))
             i = i - 1
         list[i + 1] = key
         print_list2(list, j)
-        if (j != len(list) - 1):
+        if j != len(list) - 1:
             for k in range(len(list)):
-                print(
-                    "node%d:f%d -> node%d:f%d [style=invis];" %
-                    (j, k, j + 1, k))
+                print("node%d:f%d -> node%d:f%d [style=invis];" % (j, k, j + 1, k))
         print("node%d:f%d -> node%d:f%d [color=red];" % (j - 1, j, j, i + 1))
+
+
 # This will point out a list
 
 
@@ -53,12 +52,12 @@ def print_list(list):
 
 
 def print_list2(list, step):
-    print("node%d [ label = \"" % step, end="")
+    print('node%d [ label = "' % step, end="")
     for i in range(len(list)):
         if i != 0:
             print("| ", end="")
         print("<f%d> %d" % (i, list[i]), end="")
-    print("\"];")
+    print('"];')
 
 
 # Create a list of random numbers
@@ -67,9 +66,11 @@ for i in range(10):
     list.append(random.randrange(100))
 # Try out the sort
 # print_list(list)
-print("""digraph G
+print(
+    """digraph G
 {
-        node [shape = record];""")
+        node [shape = record];"""
+)
 insertion_sort(list)
 # print_list(list)
 print("}", end="")

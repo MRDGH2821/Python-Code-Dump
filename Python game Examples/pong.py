@@ -1,7 +1,9 @@
 # --- Import libraries used for this program
 import math
-import pygame
 import random
+
+import pygame
+
 # Define some colors
 black = (0, 0, 0)
 white = (255, 255, 255)
@@ -47,6 +49,7 @@ class Ball(pygame.sprite.Sprite):
             # Reverse ball direction, let the other guy get it first
             self.direction += 180
             self.y = 50
+
     # This function will bounce the ball off a horizontal surface (not a
     # vertical one)
 
@@ -55,6 +58,7 @@ class Ball(pygame.sprite.Sprite):
         self.direction -= diff
         # Speed the ball up
         self.speed *= 1.1
+
     # Update the position of the ball
 
     def update(self):
@@ -78,6 +82,8 @@ class Ball(pygame.sprite.Sprite):
         # Do we bounce of the right side of the screen?
         if self.x > self.screenwidth - self.width:
             self.direction = (360 - self.direction) % 360
+
+
 # This class represents the bar at the bottom that the player controls
 
 
@@ -97,6 +103,7 @@ class Player(pygame.sprite.Sprite):
         self.screenwidth = pygame.display.get_surface().get_width()
         self.rect.x = 0
         self.rect.y = y_pos
+
     # Update the player
 
     def update(self):
@@ -119,7 +126,7 @@ pygame.init()
 # Create an 800x600 sized screen
 screen = pygame.display.set_mode([800, 600])
 # Set the title of the window
-pygame.display.set_caption('Pong')
+pygame.display.set_caption("Pong")
 # Enable this to make the mouse disappear when over our window
 pygame.mouse.set_visible(0)
 # This is a font we use to draw text on the screen (size 36)
@@ -177,8 +184,7 @@ while exit_program is not True:
     if pygame.sprite.spritecollide(player1, balls, False):
         # The 'diff' lets you try to bounce the ball left or right depending
         # where on the paddle you hit it
-        diff = (player1.rect.x + player1.width / 2) - \
-            (ball.rect.x + ball.width / 2)
+        diff = (player1.rect.x + player1.width / 2) - (ball.rect.x + ball.width / 2)
         # Set the ball's y position in case we hit the ball on the edge of the
         # paddle
         ball.y = 570
@@ -188,8 +194,7 @@ while exit_program is not True:
     if pygame.sprite.spritecollide(player2, balls, False):
         # The 'diff' lets you try to bounce the ball left or right depending
         # where on the paddle you hit it
-        diff = (player2.rect.x + player2.width / 2) - \
-            (ball.rect.x + ball.width / 2)
+        diff = (player2.rect.x + player2.width / 2) - (ball.rect.x + ball.width / 2)
         # Set the ball's y position in case we hit the ball on the edge of the
         # paddle
         ball.y = 40

@@ -4,8 +4,11 @@ Simpson College Computer Science
 http://programarcadegames.com/
 http://simpson.edu/computer-science/
 """
-import pygame
+
 import random
+
+import pygame
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -19,8 +22,8 @@ class Block(pygame.sprite.Sprite):
     """
 
     def __init__(self, color, width, height):
-        """ Constructor. Pass in the color of the block,
-        and its x and y position. """
+        """Constructor. Pass in the color of the block,
+        and its x and y position."""
         # Call the parent class (Sprite) constructor
         super().__init__()
         # Create an image of the block, and fill it with a color.
@@ -42,19 +45,25 @@ class Block(pygame.sprite.Sprite):
         self.change_y = 0
 
     def update(self):
-        """ Called each frame. """
+        """Called each frame."""
         self.rect.x += self.change_x
         self.rect.y += self.change_y
-        if self.rect.right >= self.right_boundary or self.rect.left <= self.left_boundary:
+        if (
+            self.rect.right >= self.right_boundary
+            or self.rect.left <= self.left_boundary
+        ):
             self.change_x *= -1
-        if self.rect.bottom >= self.bottom_boundary or self.rect.top <= self.top_boundary:
+        if (
+            self.rect.bottom >= self.bottom_boundary
+            or self.rect.top <= self.top_boundary
+        ):
             self.change_y *= -1
 
 
 class Player(Block):
-    """ The player class derives from Block, but overrides the 'update'
+    """The player class derives from Block, but overrides the 'update'
     functionality with new a movement function that will move the block
-    with the mouse. """
+    with the mouse."""
 
     def update(self):
         # Get the current mouse position. This returns the position

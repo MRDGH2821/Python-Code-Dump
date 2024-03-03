@@ -5,7 +5,9 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
+
 import pygame
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -46,7 +48,7 @@ class Ball(pygame.sprite.Sprite):
             self.my_joystick.init()
 
     def update(self):
-        """ Update the position of the ball """
+        """Update the position of the ball"""
         # As long as there is a joystick
         if self.joystick_count != 0:
             # This gets the position of the axis on the game controller

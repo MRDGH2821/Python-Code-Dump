@@ -1,8 +1,10 @@
 """
 Module for managing platforms.
 """
+
 import pygame
 from spritesheet_functions import SpriteSheet
+
 # These constants define our platform types:
 #   Name of file
 #   X location of sprite
@@ -18,24 +20,27 @@ STONE_PLATFORM_RIGHT = (792, 648, 70, 40)
 
 
 class Platform(pygame.sprite.Sprite):
-    """ Platform the user can jump on """
+    """Platform the user can jump on"""
 
     def __init__(self, sprite_sheet_data):
-        """ Platform constructor. Assumes constructed with user passing in
-            an array of 5 numbers like what's defined at the top of this
-            code. """
+        """Platform constructor. Assumes constructed with user passing in
+        an array of 5 numbers like what's defined at the top of this
+        code."""
         super().__init__()
         sprite_sheet = SpriteSheet("tiles_spritesheet.png")
         # Grab the image for this platform
-        self.image = sprite_sheet.get_image(sprite_sheet_data[0],
-                                            sprite_sheet_data[1],
-                                            sprite_sheet_data[2],
-                                            sprite_sheet_data[3])
+        self.image = sprite_sheet.get_image(
+            sprite_sheet_data[0],
+            sprite_sheet_data[1],
+            sprite_sheet_data[2],
+            sprite_sheet_data[3],
+        )
         self.rect = self.image.get_rect()
 
 
 class MovingPlatform(Platform):
-    """ This is a fancier platform that can actually move. """
+    """This is a fancier platform that can actually move."""
+
     change_x = 0
     change_y = 0
     boundary_top = 0
@@ -46,12 +51,12 @@ class MovingPlatform(Platform):
     player = None
 
     def update(self):
-        """ Move the platform.
-            If the player is in the way, it will shove the player
-            out of the way. This does NOT handle what happens if a
-            platform shoves a player into another object. Make sure
-            moving platforms have clearance to push the player around
-            or add code to handle what happens if they don't. """
+        """Move the platform.
+        If the player is in the way, it will shove the player
+        out of the way. This does NOT handle what happens if a
+        platform shoves a player into another object. Make sure
+        moving platforms have clearance to push the player around
+        or add code to handle what happens if they don't."""
         # Move left/right
         self.rect.x += self.change_x
         # See if we hit the player

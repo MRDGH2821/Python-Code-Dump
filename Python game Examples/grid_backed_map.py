@@ -5,7 +5,9 @@ Simpson College Computer Science
 http://programarcadegames.com/
 http://simpson.edu/computer-science/
 """
+
 import pygame
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -55,12 +57,16 @@ while not done:
                 color = WHITE
             else:
                 color = GREEN
-            pygame.draw.rect(screen,
-                             color,
-                             [MARGIN + (WIDTH + MARGIN) * column,
-                              MARGIN + (HEIGHT + MARGIN) * row,
-                              WIDTH,
-                              HEIGHT])
+            pygame.draw.rect(
+                screen,
+                color,
+                [
+                    MARGIN + (WIDTH + MARGIN) * column,
+                    MARGIN + (HEIGHT + MARGIN) * row,
+                    WIDTH,
+                    HEIGHT,
+                ],
+            )
     # Limit to 60 frames per second
     clock.tick(60)
     # Go ahead and update the screen with what we've drawn.

@@ -5,7 +5,9 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
+
 import pygame
+
 # --- Globals ---
 # Colors
 BLACK = (0, 0, 0)
@@ -21,7 +23,8 @@ y_change = 0
 
 
 class Segment(pygame.sprite.Sprite):
-    """ Class to represent one segment of the snake. """
+    """Class to represent one segment of the snake."""
+
     # -- Methods
     # Constructor function
 
@@ -42,7 +45,7 @@ pygame.init()
 # Create an 800x600 sized screen
 screen = pygame.display.set_mode([800, 600])
 # Set the title of the window
-pygame.display.set_caption('Snake Example')
+pygame.display.set_caption("Snake Example")
 allspriteslist = pygame.sprite.Group()
 # Create an initial snake
 snake_segments = []
@@ -63,17 +66,17 @@ while not done:
         # segment, plus the margin.
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                x_change = (segment_width + segment_margin) * - 1
+                x_change = (segment_width + segment_margin) * -1
                 y_change = 0
             if event.key == pygame.K_RIGHT:
-                x_change = (segment_width + segment_margin)
+                x_change = segment_width + segment_margin
                 y_change = 0
             if event.key == pygame.K_UP:
                 x_change = 0
-                y_change = (segment_height + segment_margin) * - 1
+                y_change = (segment_height + segment_margin) * -1
             if event.key == pygame.K_DOWN:
                 x_change = 0
-                y_change = (segment_height + segment_margin)
+                y_change = segment_height + segment_margin
     # Get rid of last segment of the snake
     # .pop() command removes last item in list
     old_segment = snake_segments.pop()

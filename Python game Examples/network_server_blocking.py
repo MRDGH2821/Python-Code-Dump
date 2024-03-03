@@ -1,5 +1,6 @@
 import socket
-host = ''
+
+host = ""
 port = 12345
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((host, port))

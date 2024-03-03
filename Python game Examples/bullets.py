@@ -6,8 +6,11 @@
  http://simpson.edu/computer-science/
  Explanation video: http://youtu.be/PpdJjaiLX6A
 """
-import pygame
+
 import random
+
+import pygame
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -17,7 +20,7 @@ BLUE = (0, 0, 255)
 
 
 class Block(pygame.sprite.Sprite):
-    """ This class represents the block. """
+    """This class represents the block."""
 
     def __init__(self, color):
         # Call the parent class (Sprite) constructor
@@ -28,10 +31,10 @@ class Block(pygame.sprite.Sprite):
 
 
 class Player(pygame.sprite.Sprite):
-    """ This class represents the Player. """
+    """This class represents the Player."""
 
     def __init__(self):
-        """ Set up the player on creation. """
+        """Set up the player on creation."""
         # Call the parent class (Sprite) constructor
         super().__init__()
         self.image = pygame.Surface([20, 20])
@@ -39,7 +42,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
     def update(self):
-        """ Update the player's position. """
+        """Update the player's position."""
         # Get the current mouse position. This returns the position
         # as a list of two numbers.
         pos = pygame.mouse.get_pos()
@@ -48,7 +51,7 @@ class Player(pygame.sprite.Sprite):
 
 
 class Bullet(pygame.sprite.Sprite):
-    """ This class represents the bullet . """
+    """This class represents the bullet ."""
 
     def __init__(self):
         # Call the parent class (Sprite) constructor
@@ -58,7 +61,7 @@ class Bullet(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
     def update(self):
-        """ Move the bullet. """
+        """Move the bullet."""
         self.rect.y -= 3
 
 

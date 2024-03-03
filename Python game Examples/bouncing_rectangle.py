@@ -6,7 +6,9 @@
  http://simpson.edu/computer-science/
  Explanation video: http://youtu.be/-GmKoaX2iMs
 """
+
 import pygame
+
 # Define some colors
 black = (0, 0, 0)
 white = (255, 255, 255)

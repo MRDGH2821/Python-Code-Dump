@@ -9,7 +9,7 @@ import pygame.gfxdraw
 
 
 def drawEllipse(surface, x0, y0, a, b, color, width=1):
-    if (a == 0 or b == 0):
+    if a == 0 or b == 0:
         return
     a = abs(a)
     b = abs(b)
@@ -20,7 +20,7 @@ def drawEllipse(surface, x0, y0, a, b, color, width=1):
     y = b
     stopy = 0
     stopx = a2 * b
-    while (stopy <= stopx):
+    while stopy <= stopx:
         if width > 1:
             pygame.gfxdraw.filled_circle(surface, x0 + x, y0 + y, width, color)
             pygame.gfxdraw.filled_circle(surface, x0 - x, y0 + y, width, color)
@@ -34,7 +34,7 @@ def drawEllipse(surface, x0, y0, a, b, color, width=1):
         x += 1
         error -= b2 * (x - 1)
         stopy += b2
-        if (error <= 0):
+        if error <= 0:
             error += a2 * (y - 1)
             y -= 1
             stopx -= a2
@@ -43,7 +43,7 @@ def drawEllipse(surface, x0, y0, a, b, color, width=1):
     y = 0
     stopy = b2 * a
     stopx = 0
-    while (stopy >= stopx):
+    while stopy >= stopx:
         if width > 1:
             pygame.gfxdraw.filled_circle(surface, x0 + x, y0 + y, width, color)
             pygame.gfxdraw.filled_circle(surface, x0 - x, y0 + y, width, color)
@@ -57,7 +57,7 @@ def drawEllipse(surface, x0, y0, a, b, color, width=1):
         y += 1
         error -= a2 * (y - 1)
         stopx += a2
-        if (error < 0):
+        if error < 0:
             error += b2 * (x - 1)
             x -= 1
             stopy -= b2

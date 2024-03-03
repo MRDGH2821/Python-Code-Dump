@@ -1,5 +1,7 @@
-from easygui import msgbox, choicebox, ccbox
 import sys
+
+from easygui import ccbox, choicebox, msgbox
+
 while True:
     msgbox("Hello, world!")
     msg = "What is your favorite flavor?"

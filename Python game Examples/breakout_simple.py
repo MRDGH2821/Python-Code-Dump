@@ -5,9 +5,12 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
+
 # --- Import libraries used for this program
 import math
+
 import pygame
+
 # Define some colors
 black = (0, 0, 0)
 white = (255, 255, 255)
@@ -19,11 +22,11 @@ block_height = 15
 
 class Block(pygame.sprite.Sprite):
     """This class represents each block that will get knocked out by the ball
-    It derives from the "Sprite" class in Pygame """
+    It derives from the "Sprite" class in Pygame"""
 
     def __init__(self, color, x, y):
-        """ Constructor. Pass in the color of the block,
-            and its x and y position. """
+        """Constructor. Pass in the color of the block,
+        and its x and y position."""
         # Call the parent class (Sprite) constructor
         super().__init__()
         # Create the image of the block of appropriate size
@@ -40,8 +43,9 @@ class Block(pygame.sprite.Sprite):
 
 
 class Ball(pygame.sprite.Sprite):
-    """ This class represents the ball
-        It derives from the "Sprite" class in Pygame """
+    """This class represents the ball
+    It derives from the "Sprite" class in Pygame"""
+
     # Speed in pixels per cycle
     speed = 10.0
     # Floating point representation of where the ball is
@@ -67,13 +71,13 @@ class Ball(pygame.sprite.Sprite):
         self.screenwidth = pygame.display.get_surface().get_width()
 
     def bounce(self, diff):
-        """ This function will bounce the ball
-            off a horizontal surface (not a vertical one) """
+        """This function will bounce the ball
+        off a horizontal surface (not a vertical one)"""
         self.direction = (180 - self.direction) % 360
         self.direction -= diff
 
     def update(self):
-        """ Update the position of the ball. """
+        """Update the position of the ball."""
         # Sine and Cosine work in degrees, so we have to convert them
         direction_radians = math.radians(self.direction)
         # Change the position (x and y) according to the speed and direction
@@ -102,10 +106,10 @@ class Ball(pygame.sprite.Sprite):
 
 
 class Player(pygame.sprite.Sprite):
-    """ This class represents the bar at the bottom that the player controls. """
+    """This class represents the bar at the bottom that the player controls."""
 
     def __init__(self):
-        """ Constructor for Player. """
+        """Constructor for Player."""
         # Call the parent's constructor
         super().__init__()
         self.width = 75
@@ -120,7 +124,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y = self.screenheight - self.height
 
     def update(self):
-        """ Update the player position. """
+        """Update the player position."""
         # Get where the mouse is
         pos = pygame.mouse.get_pos()
         # Set the left side of the player bar to the mouse position
@@ -136,7 +140,7 @@ pygame.init()
 # Create an 800x600 sized screen
 screen = pygame.display.set_mode([800, 600])
 # Set the title of the window
-pygame.display.set_caption('Breakout')
+pygame.display.set_caption("Breakout")
 # Enable this to make the mouse disappear when over our window
 pygame.mouse.set_visible(0)
 # This is a font we use to draw text on the screen (size 36)
@@ -201,8 +205,7 @@ while exit_program is not True:
     if pygame.sprite.spritecollide(player, balls, False):
         # The 'diff' lets you try to bounce the ball left or right
         # depending where on the paddle you hit it
-        diff = (player.rect.x + player.width / 2) - \
-            (ball.rect.x + ball.width / 2)
+        diff = (player.rect.x + player.width / 2) - (ball.rect.x + ball.width / 2)
         # Set the ball's y position in case
         # we hit the ball on the edge of the paddle
         ball.rect.y = screen.get_height() - player.rect.height - ball.rect.height - 1

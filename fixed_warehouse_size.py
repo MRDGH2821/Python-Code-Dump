@@ -6,7 +6,7 @@ Fixed Warehouse Challenge
 class Product:
     _count = 0
 
-    def __init__(self, name):
+    def __init__(self, name: str):
         if Product._count < Limit.get_limit():
             self.name = name
             Product._count += 1
@@ -21,21 +21,21 @@ class Product:
 
 
 class UserLimitExceeded(Exception):
-    def __init__(self, message):
+    def __init__(self, message: str):
         super().__init__(message)
         self.message = message
 
 
 class Limit:
-    _limit = 10
+    _limit: int = 10
 
     @classmethod
-    def get_limit(cls):
+    def get_limit(cls) -> int:
         return cls._limit
 
     @classmethod
-    def set_limit(self, limit):
-        self._limit = limit
+    def set_limit(cls, limit: int):
+        cls._limit = limit
 
 
 def main():

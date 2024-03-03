@@ -6,16 +6,20 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
-import pygame
+
 import random
+
+import pygame
+
 black = (0, 0, 0)
 white = (255, 255, 255)
 blue = (0, 0, 255)
 
 
 class Player(pygame.sprite.Sprite):
-    """ This class represents the paddles on either side of the screen
-        It derives from the "Sprite" class in Pygame """
+    """This class represents the paddles on either side of the screen
+    It derives from the "Sprite" class in Pygame"""
+
     # Class Attributes
     width = 10
     height = 75
@@ -39,16 +43,14 @@ class Player(pygame.sprite.Sprite):
         joystick_count = pygame.joystick.get_count()
         if joystick_count < joystick_no + 1:
             # No joysticks!
-            print(
-                "Error, I didn't find enough joysticks. Found ",
-                joystick_count)
+            print("Error, I didn't find enough joysticks. Found ", joystick_count)
         else:
             # Use joystick #0 and initialize it
             self.my_joystick = pygame.joystick.Joystick(joystick_no)
             self.my_joystick.init()
 
     def update(self):
-        """ Update the player's position. """
+        """Update the player's position."""
         # As long as there is a joystick
         if self.my_joystick is not None:
             # This gets the position of the axis on the game controller
@@ -66,8 +68,9 @@ class Player(pygame.sprite.Sprite):
 
 
 class Wall(pygame.sprite.Sprite):
-    """ This class represents the wall at the top and bottom of the
-        screen. """
+    """This class represents the wall at the top and bottom of the
+    screen."""
+
     # Constructor function
 
     def __init__(self, x, y, width, height):
@@ -83,7 +86,8 @@ class Wall(pygame.sprite.Sprite):
 
 
 class Ball(pygame.sprite.Sprite):
-    """ This class represents the ball that bounces around. """
+    """This class represents the ball that bounces around."""
+
     # Set speed vector
     change_x = 0
     change_y = 0
@@ -103,7 +107,7 @@ class Ball(pygame.sprite.Sprite):
         self.walls = walls
 
     def update(self):
-        """ Updat the ball's position. """
+        """Updat the ball's position."""
         # Get the old position, in case we need to go back to it
         old_x = self.rect.x
         new_x = old_x + self.change_x
@@ -135,7 +139,7 @@ screen_width = 800
 screen_height = 600
 screen = pygame.display.set_mode([screen_width, screen_height])
 # Set the title of the window
-pygame.display.set_caption('Test')
+pygame.display.set_caption("Test")
 # Create a surface we can draw on
 background = pygame.Surface(screen.get_size())
 # Used for converting color maps and such
@@ -189,7 +193,7 @@ while not done:
                 ball.change_y = random.randrange(-5, 6)
                 ball.change_x = random.randrange(5, 10)
                 # Is the ball headed left or right? Select randomly
-                if (random.randrange(2) == 0):
+                if random.randrange(2) == 0:
                     ball.change_x *= -1
     # Update the ball position. Pass it the list of stuff it can bounce off of
     movingsprites.update()

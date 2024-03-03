@@ -1,6 +1,7 @@
 import socket
 import time
-host = ''
+
+host = ""
 port = 12345
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.setblocking(0)
@@ -9,7 +10,7 @@ s.listen(1)
 print("Listening")
 while True:
     try:
-        time.sleep(.1)
+        time.sleep(0.1)
         conn, addr = s.accept()
         print("Connected by: ", addr)
         data = conn.recv(1024)
@@ -18,7 +19,7 @@ while True:
             print(data_string)
             conn.close()
     except BlockingIOError:
-        """ Do Nothing """
+        """Do Nothing"""
     except KeyboardInterrupt:
         break
 print("End Listening")

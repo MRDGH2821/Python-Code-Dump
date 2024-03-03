@@ -1,5 +1,6 @@
 # Connect to port 12345
 import socket
+
 port = 12345
 host = socket.gethostname()
 # host = '10.1.21.1'

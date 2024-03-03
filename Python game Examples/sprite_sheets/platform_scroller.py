@@ -17,14 +17,15 @@ http://programarcadegames.com/python_examples/sprite_sheets/
 Game art from Kenney.nl:
 http://opengameart.org/content/platformer-art-deluxe
 """
-import pygame
+
 import constants
 import levels
+import pygame
 from player import Player
 
 
 def main():
-    """ Main Program """
+    """Main Program"""
     pygame.init()
     # Set the height and width of the screen
     size = [constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT]

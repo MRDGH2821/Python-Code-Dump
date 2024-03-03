@@ -6,7 +6,9 @@
  http://simpson.edu/computer-science/
  Explanation video: http://youtu.be/mdTeqiWyFnc
 """
+
 import pygame
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -62,12 +64,16 @@ while done is False:
             color = WHITE
             if grid[row][column] == 1:
                 color = GREEN
-            pygame.draw.rect(screen,
-                             color,
-                             [(margin + width) * column + margin,
-                              (margin + height) * row + margin,
-                              width,
-                              height])
+            pygame.draw.rect(
+                screen,
+                color,
+                [
+                    (margin + width) * column + margin,
+                    (margin + height) * row + margin,
+                    width,
+                    height,
+                ],
+            )
     # Limit to 60 frames per second
     clock.tick(60)
     # Go ahead and update the screen with what we've drawn.

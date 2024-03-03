@@ -6,8 +6,11 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
-import pygame
+
 import random
+
+import pygame
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -21,7 +24,7 @@ class Block(pygame.sprite.Sprite):
     # This constructor lets you use any graphic:
     # my_sprite = Block("any_graphic.png")
     # But if you DON'T want any graphic, use the following instead:
-    '''
+    """
     def __init__(self):
         super().__init__()
         self.image = pygame.image.load("my_graphic.png").convert()
@@ -29,7 +32,7 @@ class Block(pygame.sprite.Sprite):
         # background is WHITE.
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
-    '''
+    """
 
     def __init__(self, filename):
         # Call the parent class (Sprite) constructor

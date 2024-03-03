@@ -7,7 +7,9 @@
  Explanation video: http://youtu.be/ONAK8VZIcI4
  Explanation video: http://youtu.be/_6c4o41BIms
 """
+
 import pygame
+
 # Define some colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -16,7 +18,7 @@ pygame.init()
 # Create an 800x600 sized screen
 screen = pygame.display.set_mode([800, 600])
 # This sets the name of the window
-pygame.display.set_caption('CMSC 150 is cool')
+pygame.display.set_caption("CMSC 150 is cool")
 clock = pygame.time.Clock()
 # Before the loop, load the sounds:
 click_sound = pygame.mixer.Sound("laser5.ogg")

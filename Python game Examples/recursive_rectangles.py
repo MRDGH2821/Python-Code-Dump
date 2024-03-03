@@ -6,7 +6,9 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
+
 import pygame
+
 # Define some colors
 black = (0, 0, 0)
 white = (255, 255, 255)
@@ -15,17 +17,15 @@ red = (255, 0, 0)
 
 
 def recursive_draw(x, y, width, height):
-    """ Recursive rectangle function. """
-    pygame.draw.rect(screen, black,
-                     [x, y, width, height],
-                     1)
+    """Recursive rectangle function."""
+    pygame.draw.rect(screen, black, [x, y, width, height], 1)
     # Is the rectangle wide enough to draw again?
-    if (width > 14):
+    if width > 14:
         # Scale down
-        x += width * .1
-        y += height * .1
-        width *= .8
-        height *= .8
+        x += width * 0.1
+        y += height * 0.1
+        width *= 0.8
+        height *= 0.8
         # Recursively draw again
         recursive_draw(x, y, width, height)
 

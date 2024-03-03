@@ -7,6 +7,7 @@
  This program is based off the ideas in the excellent tutorials
  at http://nehe.gamedev.net/
 """
+
 import OpenGL.GL
 import OpenGL.GLU
 import pygame
@@ -29,18 +30,16 @@ def init_gl():
     OpenGL.GL.glClearDepth(1.0)
     OpenGL.GL.glEnable(OpenGL.GL.GL_DEPTH_TEST)
     OpenGL.GL.glDepthFunc(OpenGL.GL.GL_LEQUAL)
-    OpenGL.GL.glHint(OpenGL.GL.GL_PERSPECTIVE_CORRECTION_HINT,
-                     OpenGL.GL.GL_NICEST)
+    OpenGL.GL.glHint(OpenGL.GL.GL_PERSPECTIVE_CORRECTION_HINT, OpenGL.GL.GL_NICEST)
 
 
 def draw_gl_scene():
-    OpenGL.GL.glClear(OpenGL.GL.GL_COLOR_BUFFER_BIT |
-                      OpenGL.GL.GL_DEPTH_BUFFER_BIT)
+    OpenGL.GL.glClear(OpenGL.GL.GL_COLOR_BUFFER_BIT | OpenGL.GL.GL_DEPTH_BUFFER_BIT)
     OpenGL.GL.glLoadIdentity()
 
 
 def main():
-    """ Main function for the game. """
+    """Main function for the game."""
     # Get Pygame ready
     pygame.init()
     # Set the width and height of the screen [width,height]

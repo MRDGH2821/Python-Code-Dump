@@ -37,7 +37,7 @@ def save_high_score(new_high_score):
 
 
 def main():
-    """ Main program is here. """
+    """Main program is here."""
     # Get the high score
     high_score = get_high_score()
     # Get the score from the current game

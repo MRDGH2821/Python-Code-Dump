@@ -5,7 +5,9 @@ http://programarcadegames.com/
 http://simpson.edu/computer-science/
 Show everything we can pull off the joystick
 """
+
 import pygame
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -19,30 +21,30 @@ class TextPrint(object):
     """
 
     def __init__(self):
-        """ Constructor """
+        """Constructor"""
         self.reset()
         self.x_pos = 10
         self.y_pos = 10
         self.font = pygame.font.Font(None, 20)
 
     def print(self, my_screen, text_string):
-        """ Draw text onto the screen. """
+        """Draw text onto the screen."""
         text_bitmap = self.font.render(text_string, True, BLACK)
         my_screen.blit(text_bitmap, [self.x_pos, self.y_pos])
         self.y_pos += self.line_height
 
     def reset(self):
-        """ Reset text to the top of the screen. """
+        """Reset text to the top of the screen."""
         self.x_pos = 10
         self.y_pos = 10
         self.line_height = 15
 
     def indent(self):
-        """ Indent the next line of text """
+        """Indent the next line of text"""
         self.x_pos += 10
 
     def unindent(self):
-        """ Unindent the next line of text """
+        """Unindent the next line of text"""
         self.x_pos -= 10
 
 

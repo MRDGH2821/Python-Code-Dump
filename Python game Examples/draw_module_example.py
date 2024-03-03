@@ -6,8 +6,10 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
+
 # Import a library of functions called 'pygame'
 import pygame
+
 # Initialize the game engine
 pygame.init()
 # Define the colors we will use in RGB format
@@ -37,8 +39,9 @@ while not done:
     pygame.draw.line(screen, green, [0, 0], [50, 30], 5)
     # Draw on the screen a green line from (0,0) to (50.75)
     # 5 pixels wide.
-    pygame.draw.lines(screen, black, False, [
-                      [0, 80], [50, 90], [200, 80], [220, 30]], 5)
+    pygame.draw.lines(
+        screen, black, False, [[0, 80], [50, 90], [200, 80], [220, 30]], 5
+    )
     # Draw on the screen a green line from (0,0) to (50.75)
     # 5 pixels wide.
     pygame.draw.aaline(screen, green, [0, 50], [50, 80], True)

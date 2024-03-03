@@ -3,6 +3,7 @@
 # http://programarcadegames.com/
 # http://simpson.edu/computer-science/
 import sys
+
 # Divide by zero
 try:
     x = 5 / 0
@@ -25,12 +26,12 @@ while not numberEntered:
         print("Error, invalid integer")
 # Error opening file
 try:
-    f = open('myfile.txt')
+    f = open("myfile.txt")
 except BaseException:
     print("Error opening file")
 # Multiple errors
 try:
-    f = open('myfile.txt')
+    f = open("myfile.txt")
     s = f.readline()
     i = int(s.strip())
     x = 101 / i

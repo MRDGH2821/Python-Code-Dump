@@ -6,9 +6,12 @@ http://programarcadegames.com/
 http://simpson.edu/computer-science/
 Explanation video: http://youtu.be/Gkhz3FuhGoI
 """
+
+import random
+
 # Import a library of functions called 'pygame'
 import pygame
-import random
+
 # Initialize the game engine
 pygame.init()
 BLACK = [0, 0, 0]

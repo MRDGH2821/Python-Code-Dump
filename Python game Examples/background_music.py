@@ -6,7 +6,9 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
+
 import pygame
+
 # Define some colors
 black = (0, 0, 0)
 white = (255, 255, 255)
@@ -24,7 +26,7 @@ clock = pygame.time.Clock()
 # Play "O Fortuna" by MIT Choir
 # Available from:
 # http://freemusicarchive.org/music/MIT_Concert_Choir/Carmina_Burana_Carl_Orff/01_1355
-pygame.mixer.music.load('MIT_Concert_Choir_O_Fortuna.ogg')
+pygame.mixer.music.load("MIT_Concert_Choir_O_Fortuna.ogg")
 pygame.mixer.music.set_endevent(pygame.constants.USEREVENT)
 pygame.mixer.music.play()
 # -------- Main Program Loop -----------
@@ -39,7 +41,7 @@ while not done:
             # Next, play "Alone" by Saito Koji
             # Available from:
             # http://freemusicarchive.org/music/Saito_Koji/Again/01-Alone
-            pygame.mixer.music.load('Saito_Koji_-_01_-_Alone.ogg')
+            pygame.mixer.music.load("Saito_Koji_-_01_-_Alone.ogg")
             pygame.mixer.music.play()
     # ALL EVENT PROCESSING SHOULD GO ABOVE THIS COMMENT
     # ALL GAME LOGIC SHOULD GO BELOW THIS COMMENT

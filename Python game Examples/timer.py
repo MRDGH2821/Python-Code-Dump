@@ -6,7 +6,9 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
+
 import pygame
+
 # Define some colors
 black = (0, 0, 0)
 white = (255, 255, 255)

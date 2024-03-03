@@ -6,7 +6,9 @@
  http://programarcadegames.com/
  http://simpson.edu/computer-science/
 """
+
 import pygame
+
 # The use of the main function is described in Chapter 9.
 # Define some colors as global constants
 BLACK = (0, 0, 0)
@@ -16,7 +18,7 @@ RED = (255, 0, 0)
 
 
 def main():
-    """ Main function for the game. """
+    """Main function for the game."""
     pygame.init()
     # Set the width and height of the screen [width,height]
     size = [700, 500]

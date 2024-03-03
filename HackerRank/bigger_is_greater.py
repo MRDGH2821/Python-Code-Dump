@@ -2,8 +2,10 @@
 HackerRank problem: Bigger is Greater
 https://www.hackerrank.com/challenges/bigger-is-greater/problem
 """
+
 # from copy import deepcopy as dpcpy
 import os
+
 # Complete the biggerIsGreater function below.
 
 

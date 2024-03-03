@@ -3,6 +3,7 @@
 # http://programarcadegames.com/
 # http://simpson.edu/computer-science/
 import random
+
 # The selection sort
 
 
@@ -41,6 +42,8 @@ def insertion_sort(list):
         # Everything's been moved out of the way, insert
         # the key into the correct location
         list[scanPos + 1] = keyValue
+
+
 # This will point out a list
 
 

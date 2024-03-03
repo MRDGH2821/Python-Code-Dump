@@ -14,7 +14,9 @@ http://programarcadegames.com/python_examples/f.php?file=platform_scroller.py
 http://programarcadegames.com/python_examples/f.php?file=platform_moving.py
 http://programarcadegames.com/python_examples/sprite_sheets/
 """
+
 import pygame
+
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 BLUE = (0, 0, 255)
@@ -24,10 +26,10 @@ PURPLE = (255, 0, 255)
 
 
 class Wall(pygame.sprite.Sprite):
-    """This class represents the bar at the bottom that the player controls """
+    """This class represents the bar at the bottom that the player controls"""
 
     def __init__(self, x, y, width, height, color):
-        """ Constructor function """
+        """Constructor function"""
         # Call the parent's constructor
         super().__init__()
         # Make a BLUE wall, of the size specified in the parameters
@@ -40,13 +42,14 @@ class Wall(pygame.sprite.Sprite):
 
 
 class Player(pygame.sprite.Sprite):
-    """ This class represents the bar at the bottom that the player controls """
+    """This class represents the bar at the bottom that the player controls"""
+
     # Set speed vector
     change_x = 0
     change_y = 0
 
     def __init__(self, x, y):
-        """ Constructor function """
+        """Constructor function"""
         # Call the parent's constructor
         super().__init__()
         # Set height, width
@@ -58,12 +61,12 @@ class Player(pygame.sprite.Sprite):
         self.rect.x = x
 
     def changespeed(self, x, y):
-        """ Change the speed of the player. Called with a keypress. """
+        """Change the speed of the player. Called with a keypress."""
         self.change_x += x
         self.change_y += y
 
     def move(self, walls):
-        """ Find a new position for the player """
+        """Find a new position for the player"""
         # Move left/right
         self.rect.x += self.change_x
         # Did this update cause us to hit a wall?
@@ -89,13 +92,14 @@ class Player(pygame.sprite.Sprite):
 
 
 class Room(object):
-    """ Base class for all rooms. """
+    """Base class for all rooms."""
+
     """ Each room has a list of walls, and of enemy sprites. """
     wall_list = None
     enemy_sprites = None
 
     def __init__(self):
-        """ Constructor, create our lists. """
+        """Constructor, create our lists."""
         self.wall_list = pygame.sprite.Group()
         self.enemy_sprites = pygame.sprite.Group()
 
@@ -107,14 +111,15 @@ class Room1(Room):
         Room.__init__(self)
         # Make the walls. (x_pos, y_pos, width, height)
         # This is a list of walls. Each is in the form [x, y, width, height]
-        walls = [[0, 0, 20, 250, WHITE],
-                 [0, 350, 20, 250, WHITE],
-                 [780, 0, 20, 250, WHITE],
-                 [780, 350, 20, 250, WHITE],
-                 [20, 0, 760, 20, WHITE],
-                 [20, 580, 760, 20, WHITE],
-                 [390, 50, 20, 500, BLUE]
-                 ]
+        walls = [
+            [0, 0, 20, 250, WHITE],
+            [0, 350, 20, 250, WHITE],
+            [780, 0, 20, 250, WHITE],
+            [780, 350, 20, 250, WHITE],
+            [20, 0, 760, 20, WHITE],
+            [20, 580, 760, 20, WHITE],
+            [390, 50, 20, 500, BLUE],
+        ]
         # Loop through the list. Create the wall, add it to the list
         for item in walls:
             wall = Wall(item[0], item[1], item[2], item[3], item[4])
@@ -126,15 +131,16 @@ class Room2(Room):
 
     def __init__(self):
         Room.__init__(self)
-        walls = [[0, 0, 20, 250, RED],
-                 [0, 350, 20, 250, RED],
-                 [780, 0, 20, 250, RED],
-                 [780, 350, 20, 250, RED],
-                 [20, 0, 760, 20, RED],
-                 [20, 580, 760, 20, RED],
-                 [190, 50, 20, 500, GREEN],
-                 [590, 50, 20, 500, GREEN]
-                 ]
+        walls = [
+            [0, 0, 20, 250, RED],
+            [0, 350, 20, 250, RED],
+            [780, 0, 20, 250, RED],
+            [780, 350, 20, 250, RED],
+            [20, 0, 760, 20, RED],
+            [20, 580, 760, 20, RED],
+            [190, 50, 20, 500, GREEN],
+            [590, 50, 20, 500, GREEN],
+        ]
         for item in walls:
             wall = Wall(item[0], item[1], item[2], item[3], item[4])
             self.wall_list.add(wall)
@@ -145,13 +151,14 @@ class Room3(Room):
 
     def __init__(self):
         Room.__init__(self)
-        walls = [[0, 0, 20, 250, PURPLE],
-                 [0, 350, 20, 250, PURPLE],
-                 [780, 0, 20, 250, PURPLE],
-                 [780, 350, 20, 250, PURPLE],
-                 [20, 0, 760, 20, PURPLE],
-                 [20, 580, 760, 20, PURPLE]
-                 ]
+        walls = [
+            [0, 0, 20, 250, PURPLE],
+            [0, 350, 20, 250, PURPLE],
+            [780, 0, 20, 250, PURPLE],
+            [780, 350, 20, 250, PURPLE],
+            [20, 0, 760, 20, PURPLE],
+            [20, 580, 760, 20, PURPLE],
+        ]
         for item in walls:
             wall = Wall(item[0], item[1], item[2], item[3], item[4])
             self.wall_list.add(wall)
@@ -165,13 +172,13 @@ class Room3(Room):
 
 
 def main():
-    """ Main Program """
+    """Main Program"""
     # Call this function so the Pygame library can initialize itself
     pygame.init()
     # Create an 800x600 sized screen
     screen = pygame.display.set_mode([800, 600])
     # Set the title of the window
-    pygame.display.set_caption('Maze Runner')
+    pygame.display.set_caption("Maze Runner")
     # Create the player paddle object
     player = Player(50, 50)
     movingsprites = pygame.sprite.Group()

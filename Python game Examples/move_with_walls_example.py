@@ -14,7 +14,9 @@ http://programarcadegames.com/python_examples/f.php?file=platform_scroller.py
 http://programarcadegames.com/python_examples/f.php?file=platform_moving.py
 http://programarcadegames.com/python_examples/sprite_sheets/
 """
+
 import pygame
+
 # -- Global constants
 # Colors
 BLACK = (0, 0, 0)
@@ -27,7 +29,8 @@ SCREEN_HEIGHT = 600
 
 
 class Player(pygame.sprite.Sprite):
-    """ This class represents the bar at the bottom that the player controls. """
+    """This class represents the bar at the bottom that the player controls."""
+
     # Constructor function
 
     def __init__(self, x, y):
@@ -46,12 +49,12 @@ class Player(pygame.sprite.Sprite):
         self.walls = None
 
     def changespeed(self, x, y):
-        """ Change the speed of the player. """
+        """Change the speed of the player."""
         self.change_x += x
         self.change_y += y
 
     def update(self):
-        """ Update the player position. """
+        """Update the player position."""
         # Move left/right
         self.rect.x += self.change_x
         # Did this update cause us to hit a wall?
@@ -77,10 +80,10 @@ class Player(pygame.sprite.Sprite):
 
 
 class Wall(pygame.sprite.Sprite):
-    """ Wall the player can run into. """
+    """Wall the player can run into."""
 
     def __init__(self, x, y, width, height):
-        """ Constructor for the wall that the player can run into. """
+        """Constructor for the wall that the player can run into."""
         # Call the parent's constructor
         super().__init__()
         # Make a blue wall, of the size specified in the parameters
@@ -97,7 +100,7 @@ pygame.init()
 # Create an 800x600 sized screen
 screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
 # Set the title of the window
-pygame.display.set_caption('Test')
+pygame.display.set_caption("Test")
 # List to hold all the sprites
 all_sprite_list = pygame.sprite.Group()
 # Make the walls. (x_pos, y_pos, width, height)

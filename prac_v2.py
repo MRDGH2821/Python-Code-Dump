@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+
 win = tk.Tk()
 main_menu = tk.Menu(win)
 win.config(menu=main_menu)
@@ -13,21 +14,17 @@ class FontMenu(tk.Toplevel):
         self.find_popup = tk.Toplevel()
         self.find_popup.geometry("450x200")
         self.find_popup.title("Fonts")
-        self.find_popup.resizable(0, 0)
+        self.find_popup.resizable(False, False)
         # Frame for find
-        self.find_frame = ttk.LabelFrame(
-            self.find_popup, text="Font Style")
+        self.find_frame = ttk.LabelFrame(self.find_popup, text="Font Style")
         self.font_style = tk.StringVar()
         self.font_style_box = ttk.Combobox(
-            self.find_frame,
-            width=14,
-            textvariable=self.font_style,
-            state="readonly")
-        self.font_style_box['values'] = (1, 2, 3)
+            self.find_frame, width=14, textvariable=self.font_style, state="readonly"
+        )
+        self.font_style_box["values"] = (1, 2, 3)
         self.font_style_box.current(0)
         self.font_style_box.pack()
         self.find_frame.pack(pady=20)
         self.find_popup.update()
-        format_menu.add_command(
-            label="Font", command=FontMenu)  # font_func)
+        format_menu.add_command(label="Font", command=FontMenu)  # font_func)
         win.mainloop()

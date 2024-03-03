@@ -3,6 +3,7 @@
 # http://programarcadegames.com/
 # http://simpson.edu/computer-science/
 import pygame
+
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -52,11 +53,11 @@ while not done:
             # Figure out if it was an arrow key. If so
             # adjust speed.
             if event.key == pygame.K_LEFT:
-                x_speed = - 3
+                x_speed = -3
             elif event.key == pygame.K_RIGHT:
                 x_speed = 3
             elif event.key == pygame.K_UP:
-                y_speed = - 3
+                y_speed = -3
             elif event.key == pygame.K_DOWN:
                 y_speed = 3
         # User let up on a key

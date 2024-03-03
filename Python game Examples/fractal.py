@@ -5,7 +5,9 @@ Simpson College Computer Science
 http://programarcadegames.com/
 http://simpson.edu/computer-science/
 """
+
 import pygame
+
 # Define some colors
 black = (0, 0, 0)
 white = (255, 255, 255)
@@ -16,21 +18,27 @@ red = (255, 0, 0)
 def recursive_draw(x, y, width, height, count):
     # Draw the rectangle
     # pygame.draw.rect(screen,black,[x,y,width,height],1)
-    pygame.draw.line(screen,
-                     black,
-                     [x + width * .25, height // 2 + y],
-                     [x + width * .75, height // 2 + y],
-                     3)
-    pygame.draw.line(screen,
-                     black,
-                     [x + width * .25, (height * .5) // 2 + y],
-                     [x + width * .25, (height * 1.5) // 2 + y],
-                     3)
-    pygame.draw.line(screen,
-                     black,
-                     [x + width * .75, (height * .5) // 2 + y],
-                     [x + width * .75, (height * 1.5) // 2 + y],
-                     3)
+    pygame.draw.line(
+        screen,
+        black,
+        [x + width * 0.25, height // 2 + y],
+        [x + width * 0.75, height // 2 + y],
+        3,
+    )
+    pygame.draw.line(
+        screen,
+        black,
+        [x + width * 0.25, (height * 0.5) // 2 + y],
+        [x + width * 0.25, (height * 1.5) // 2 + y],
+        3,
+    )
+    pygame.draw.line(
+        screen,
+        black,
+        [x + width * 0.75, (height * 0.5) // 2 + y],
+        [x + width * 0.75, (height * 1.5) // 2 + y],
+        3,
+    )
     if count > 0:
         count -= 1
         # Top left
