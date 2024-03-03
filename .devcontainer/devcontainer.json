@@ -26,7 +26,8 @@
   "features": {
     "ghcr.io/devcontainers-contrib/features/npm-package": {
       "package": "mega-linter-runner"
-    }
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker": {}
   }
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
