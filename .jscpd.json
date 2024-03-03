@@ -9,7 +9,8 @@
     "**/.github/**",
     "**/.idea/**",
     "**/report/**",
-    "**/*.svg"
+    "**/*.svg",
+    "**/Python game Examples/**"
   ],
   "reporters": ["html", "markdown"],
   "threshold": 0
