@@ -1,12 +1,12 @@
 """
-Hackerrank question: The time in words
+HackerRank question: The time in words
 https://www.hackerrank.com/challenges/the-time-in-words/problem
 """
 import os
 # Complete the timeInWords function below.
 
 
-def timeInWords(h, m):
+def timeInWords(h: int, m: int):
     time = ""
     dt = {
         1: "one",
@@ -27,7 +27,7 @@ def timeInWords(h, m):
         16: "sixteen ",
         17: "seventeen ",
         18: "eighteen ",
-        19: "ninteen ",
+        19: "nineteen ",
         20: "twenty ",
         21: "twenty one ",
         22: "twenty two ",
@@ -50,9 +50,9 @@ def timeInWords(h, m):
 
 
 if __name__ == "__main__":
-    fptr = open(os.environ["OUTPUT_PATH"], "w")
+    file = open(os.environ["OUTPUT_PATH"], "w")
     h = int(input())
     m = int(input())
     result = timeInWords(h, m)
-    fptr.write(result + "\n")
-    fptr.close()
+    file.write(result + "\n")
+    file.close()
