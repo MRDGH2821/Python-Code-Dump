@@ -1,4 +1,7 @@
-# weight convrter
+"""
+Weight Converter
+"""
+
 fh = int(input("Convert Kg->g or g->Kg (1/2)? "))
 if fh == 1:
     kg = int(input("Enter weight in KG "))

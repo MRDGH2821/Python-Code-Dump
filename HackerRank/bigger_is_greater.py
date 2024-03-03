@@ -1,5 +1,5 @@
 """
-Hacker rank problem: Bigger is Greater
+HackerRank problem: Bigger is Greater
 https://www.hackerrank.com/challenges/bigger-is-greater/problem
 """
 # from copy import deepcopy as dpcpy
@@ -41,10 +41,10 @@ def biggerIsGreater(w: str):
         return "no answer"
 """
 if __name__ == "__main__":
-    fptr = open(os.environ["OUTPUT_PATH"], "w")
+    file = open(os.environ["OUTPUT_PATH"], "w")
     T = int(input())
     for T_itr in range(T):
         w = input()
         result = biggerIsGreater(w)
-        fptr.write(result + "\n")
-    fptr.close()
+        file.write(result + "\n")
+    file.close()
