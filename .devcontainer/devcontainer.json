@@ -23,12 +23,15 @@
   },
   "features": {
     "ghcr.io/devcontainers-contrib/features/npm-package": {
-      "package": "mega-linter-runner commitlint"
+      "package": "mega-linter-runner"
     },
     "ghcr.io/devcontainers-contrib/features/poetry": {},
     "ghcr.io/devcontainers/features/docker-in-docker": {}
   },
   "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
   "name": "Python 3",
-  "postAttachCommand": "poetry install"
+  "postAttachCommand": {
+    "npm dependencies": "npm i -g commitlint",
+    "python dependencies": "poetry install"
+  }
 }
