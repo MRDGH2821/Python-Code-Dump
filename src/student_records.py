@@ -10,7 +10,8 @@ roll_no = 0
 try:
     filetest = open("student.txt", "r")
 except FileNotFoundError:
-    print("Existing database file doesn't exist, creating new file in same location...")
+    print("Existing database file doesn't exist.")
+    print("Creating new file in same location...")
     sleep(2)
     os.system("cls")
     filetest = open("student.txt", "w")
@@ -79,7 +80,9 @@ def readspecific():
         try:
             """
             Here, the format of data is - roll no name m1 m2 m3.
-            Hence we need to split the elements of data (read as lines), find the roll number and display the data associated with the roll number.
+            Hence we need to split the elements of data (read as lines),
+            Find the roll number and
+            display the data associated with the roll number.
             """
             i = h.split()
             if roll_no == i[0]:  # Condition to find roll number
