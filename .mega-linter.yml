@@ -29,3 +29,13 @@ DISABLE_LINTERS:
 CLEAR_REPORT_FOLDER: true
 
 SPELL_CSPELL_ANALYZE_FILE_NAMES: false
+# PRE_COMMANDS:
+#   # - continue_if_failed: false
+#   #   cwd: workspace
+#   #   command: apt-get install libsdl2-dev
+#   - continue_if_failed: false
+#     cwd: workspace
+#     command: pip install poetry
+#   - continue_if_failed: false
+#     cwd: workspace
+#     command: poetry install
