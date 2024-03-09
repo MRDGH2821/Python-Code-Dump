@@ -1,67 +1,73 @@
 from openpyxl import load_workbook
 
-details_file = "./Details.xlsx"
-books_file = "./Books.xlsx"
+import os
+
+current_directory = os.path.dirname(os.path.abspath(__file__))
+
+details_file = f"{current_directory}/Details.xlsx"
+books_file = f"{current_directory}/Books.xlsx"
 
 
-def account():
-    print("###### WELCOME TO BAJRANGDAS CENTRAL LIBRARY ######")
-    choice = input("\nDo you have an existing account?(y/n)\n")
+def find_user(username: str):
     details_file_path = details_file
     details_workbook = load_workbook(details_file_path)
     details_sheet = details_workbook[details_workbook.sheetnames[0]]
 
-    n = details_sheet.max_row
+    for i in details_sheet.iter_rows(min_row=1):
+        username_value = i[2].value
+        if username_value == username:
+            return i
+    return None
 
-    flag = 0
+
+def account():
+    print("###### WELCOME TO BAJRANGDAS CENTRAL LIBRARY ######")
+    choice = input("\nDo you have an existing account?(y/n): ")
+    details_file_path = details_file
+    details_workbook = load_workbook(details_file_path)
+    details_sheet = details_workbook[details_workbook.sheetnames[0]]
+
     if choice == "y" or choice == "Y":
+        print("\nUser login")
         username = input("Enter Your Username: ")
         password = input("Enter Your Password: ")
-        for i in range(1, details_sheet.max_row):
-            username_value = details_sheet.cell(i, 2).value
-            password_value = details_sheet.cell(i, 3).value
+        i = find_user(username)
+        if i:
+            username_value = i[2].value
+            password_value = i[3].value
+            # print(username_value, password_value)
             if username_value == username and password_value == password:
-                """Comment the next 2 lines and add function call when the function issue() is created"""
-                # for k in range(sheet2.max_row):
-                #         print (sheet2.cell(k, 0).value,"  ",sheet2.cell(k, 1).value)
                 issue(username)
-                flag = 1
-            if flag == 0:
-                print("INCORRECT USERNAME OR PASSWORD")
+            else:
+                raise ValueError("Invalid Username or Password.")
+        else:
+            raise ValueError("Unknown Username or Password. Please register.")
+
     elif choice == "n" or choice == "N":
-        f = 0
-        while f != 1:
-            name = input("Enter Your Name: ")
-            gr_number = int(input("Enter Your GR Number: "))
-            username = input("Enter Your Username: ")
-            password = input("Enter Your Password: ")
 
-            for i in range(1, details_sheet.max_row):
-                gr_number_value = details_sheet.cell(i, 1).value
-                username_value = details_sheet.cell(i, 2).value
-                password_value = details_sheet.cell(i, 3).value
+        print("\nUser Registration")
+        name = input("Enter Your Name: ")
+        gr_number = int(input("Enter Your GR Number: "))
+        username = input("Enter Your Username: ")
+        password = input("Enter Your Password: ")
 
-                if username_value == username or gr_number_value == gr_number:
-                    print(
-                        "USERNAME ALREADY TAKEN or Duplicate GR Number\nTRY AGAIN"
-                    )
-                    f = 0
-                    break
-                else:
-                    f = 1
-                    c1 = details_sheet.cell(n + 1, 1)
-                    c1.value = name
-                    c2 = details_sheet.cell(n + 1, 2)
-                    c2.value = gr_number
-                    c3 = details_sheet.cell(n + 1, 3)
-                    c3.value = username
-                    c4 = details_sheet.cell(n + 1, 4)
-                    c4.value = password
-                    details_workbook.save(details_file_path)
-                    """Comment the next 2 lines and add function call when the function issue() is created """
-            # for k in range(sheet2.max_row):
-            #          print (sheet2.cell(k, 0).value, "  ", sheet2.cell(k, 1).value)
-            issue(username)
+        i = find_user(username)
+        if i:
+            gr_number_value = i[1].value
+            username_value = i[2].value
+            password_value = i[3].value
+
+            if username_value == username or gr_number_value == gr_number:
+                print(
+                    "USERNAME ALREADY TAKEN or Duplicate GR Number\nTRY AGAIN"
+                )
+
+        else:
+
+            details_sheet.append([name, gr_number, username, password])
+            details_workbook.save(details_file_path)
+
+        issue(username)
 
 
 def issue(username: str):
@@ -84,14 +90,11 @@ def issue(username: str):
         print("0. Exit")
         option = int(input("Enter choice: "))
         if option == 1:
-            for k in range(1, books_sheet.max_row):
-                print(books_sheet.cell(k, 0).value,
-                      "  ", books_sheet.cell(k, 1).value)
+            for k in books_sheet.iter_rows():
+                print(k[0].value, "  ", k[1].value)
                 while choice == "y":
                     serial = int(
-                        input(
-                            "Enter the Serial Number of the book you want to issue:")
-                    )
+                        input("Enter the Serial Number of the book you want to issue:"))
                     # print (ch)
                     if books_sheet.cell(serial + 1, 5).value == 0:
                         print("No Copies Left\n")
@@ -108,7 +111,6 @@ def issue(username: str):
                                         c2 = books_sheet.cell(serial + 2, 6)
                                         c2.value = books_sheet.cell(
                                             serial + 1, 5).value - 1
-                                        n = details_sheet.max_column
                                         details_workbook.save(
                                             details_file_path)
                                         books_workbook.save(books_file_path)
@@ -120,7 +122,7 @@ def issue(username: str):
                                         if choice == "n" or choice == "N":
                                             break
         elif option == 3:
-            cnt = 1
+            count = 0
             print("The books issued by you are:\n")
             num = 0
             for i in range(1, details_sheet.max_row):
@@ -133,16 +135,16 @@ def issue(username: str):
                         is not None
                     ):
                         print(
-                            cnt,
+                            count,
                             ".",
                             details_sheet.cell(
                                 i, j).value,
                             end="\n",
                         )
-                        cnt = cnt + 1
+                        count = count + 1
                         return_choice = "y"
                         for i in range(1, details_sheet.max_column - 4):
-                            ret = int(
+                            return_qty = int(
                                 input(
                                     "Enter the number You want to return:"
                                 )
@@ -154,17 +156,17 @@ def issue(username: str):
                                 ):
                                     if (
                                         details_sheet.cell(
-                                            num, 4 + ret - 1
+                                            num, 4 + return_qty - 1
                                         ).value
                                         != ""
                                     ):
                                         break
                                     else:
-                                        ret = ret + 1
+                                        return_qty = return_qty + 1
                                     if books_sheet.cell(
                                         k, 1
                                     ).value == details_sheet.cell(
-                                        num, 4 + ret - 1
+                                        num, 4 + return_qty - 1
                                     ).value:
                                         c = books_sheet.cell(
                                             k + 1, 6
@@ -173,7 +175,7 @@ def issue(username: str):
                                             int(books_sheet.cell(k, 5).value) + 1)
                                         # sheetd .delete_cells(num+1,ret+4)
                                         details_sheet.cell(
-                                            num + 1, ret + 4
+                                            num + 1, return_qty + 4
                                         ).value = None
                                         print(
                                             "\nReturn successful"
@@ -206,7 +208,7 @@ def issue(username: str):
         elif option == 4:
             account()
         elif option == 2:
-            cnt = 1
+            count = 1
             print(
                 "The books issued by you are:\n"
             )
@@ -228,14 +230,19 @@ def issue(username: str):
                         is not None
                     ):
                         print(
-                            cnt,
+                            count,
                             ".",
                             details_sheet.cell(
                                 i, j
                             ).value,
                             end="\n",
                         )
-                        cnt = cnt + 1
+                        count = count + 1
 
 
-account()
+try:
+    account()
+except Exception as e:
+    print("\n")
+    print(e)
+    print("Please try again later.")
