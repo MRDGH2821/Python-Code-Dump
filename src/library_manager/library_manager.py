@@ -4,12 +4,11 @@ import os
 
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
-details_file = f"{current_directory}/Details.xlsx"
-books_file = f"{current_directory}/Books.xlsx"
+details_file_path = f"{current_directory}/Details.xlsx"
+books_file_path = f"{current_directory}/Books.xlsx"
 
 
 def find_user(username: str):
-    details_file_path = details_file
     details_workbook = load_workbook(details_file_path)
     details_sheet = details_workbook[details_workbook.sheetnames[0]]
 
@@ -23,7 +22,6 @@ def find_user(username: str):
 def account():
     print("###### WELCOME TO BAJRANGDAS CENTRAL LIBRARY ######")
     choice = input("\nDo you have an existing account?(y/n): ")
-    details_file_path = details_file
     details_workbook = load_workbook(details_file_path)
     details_sheet = details_workbook[details_workbook.sheetnames[0]]
 
@@ -58,12 +56,10 @@ def account():
             password_value = i[3].value
 
             if username_value == username or gr_number_value == gr_number:
-                print(
-                    "USERNAME ALREADY TAKEN or Duplicate GR Number\nTRY AGAIN"
-                )
+                raise ValueError(
+                    "USERNAME ALREADY TAKEN or Duplicate GR Number\nTRY AGAIN")
 
         else:
-
             details_sheet.append([name, gr_number, username, password])
             details_workbook.save(details_file_path)
 
@@ -71,11 +67,9 @@ def account():
 
 
 def issue(username: str):
-    books_file_path = books_file
     books_workbook = load_workbook(books_file_path)
     books_sheet = books_workbook[books_workbook.sheetnames[0]]
 
-    details_file_path = details_file
     details_workbook = load_workbook(details_file_path)
     details_sheet = details_workbook[details_workbook.sheetnames[0]]
 
