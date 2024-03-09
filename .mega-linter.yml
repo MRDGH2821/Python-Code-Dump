@@ -31,23 +31,9 @@ CLEAR_REPORT_FOLDER: true
 SPELL_CSPELL_ANALYZE_FILE_NAMES: false
 
 PRE_COMMANDS:
-  # - continue_if_failed: false
-  #   cwd: workspace
-  #   command: apk update && apk add sdl2-dev py3-pygame freetype-dev
-  - continue_if_failed: false
-    cwd: workspace
-    command: pip install -r requirements.txt
-PYTHON_PYLINT_PRE_COMMANDS:
-  # - continue_if_failed: false
-  #   cwd: workspace
-  #   command: apk update && apk add sdl2-dev py3-pygame freetype-dev
-  - continue_if_failed: false
-    cwd: workspace
-    command: pip install -r requirements.txt
-PYTHON_PYRIGHT_PRE_COMMANDS:
-  # - continue_if_failed: false
-  #   cwd: workspace
-  #   command: apk update && apk add sdl2-dev py3-pygame freetype-dev
-  - continue_if_failed: false
-    cwd: workspace
-    command: pip install -r requirements.txt
+  - command: pip install poetry && cd $GITHUB_WORKSPACE && poetry install
+    venv: mypy
+  - command: pip install poetry && cd $GITHUB_WORKSPACE && poetry install
+    venv: pyright
+  - command: pip install poetry && cd $GITHUB_WORKSPACE && poetry install
+    venv: pylint
