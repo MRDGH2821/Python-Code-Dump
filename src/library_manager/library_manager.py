@@ -74,47 +74,59 @@ def issue(username: str):
     details_sheet = details_workbook[details_workbook.sheetnames[0]]
 
     choice = "y"
-    # print (n)
+
     while True:
         print("\n\nMain Menu:")
         print("1. View Available Books")
         print("2. View the books issued by you")
         print("3. Return Books")
-        print("4. Login Again")
-        print("0. Exit")
+        print("0. Exit (default)")
         option = int(input("Enter choice: "))
         if option == 1:
-            for k in books_sheet.iter_rows():
-                print(k[0].value, "  ", k[1].value)
-                while choice == "y":
-                    serial = int(
-                        input("Enter the Serial Number of the book you want to issue:"))
-                    # print (ch)
-                    if books_sheet.cell(serial + 1, 5).value == 0:
-                        print("No Copies Left\n")
-                        continue
-                    else:
-                        for k in range(1, books_sheet.max_row):
-                            if books_sheet.cell(k, 0).value == serial:
-                                for i in range(1, details_sheet.max_row):
-                                    if details_sheet.cell(i, 2).value == username:
-                                        # n = sheetd.max_column
-                                        c1 = details_sheet.cell(
-                                            i + 1, len(details_sheet[i + 1]) + 1)
-                                        c1.value = books_sheet.cell(k, 1).value
-                                        c2 = books_sheet.cell(serial + 2, 6)
-                                        c2.value = books_sheet.cell(
-                                            serial + 1, 5).value - 1
-                                        details_workbook.save(
-                                            details_file_path)
-                                        books_workbook.save(books_file_path)
-                                        print(
-                                            "\n\n\nSUCCESSFULL !!!!!\n The changes will be reflected in your account \n When you Login Again"
-                                        )
-                                        choice = input(
-                                            "Do You want to continue?(y/n)\n")
-                                        if choice == "n" or choice == "N":
-                                            break
+            print("Available books:\n")
+            for row in books_sheet.iter_rows():
+                print(row[0].value, "  ", row[1].value)
+            while choice == "y":
+                serial = int(
+                    input("Enter the Serial Number of the book you want to issue:"))
+                # print (ch)
+                if books_sheet.cell(serial + 1, 5).value == 0:
+                    print("No Copies Left\n")
+                    continue
+                else:
+                    for k in range(1, books_sheet.max_row):
+                        if books_sheet.cell(k, 0).value == serial:
+                            for i in range(1, details_sheet.max_row):
+                                if details_sheet.cell(i, 2).value == username:
+                                    # n = sheetd.max_column
+                                    c1 = details_sheet.cell(
+                                        i + 1, len(details_sheet[i + 1]) + 1)
+                                    c1.value = books_sheet.cell(
+                                        k, 1).value
+                                    c2 = books_sheet.cell(serial + 2, 6)
+                                    c2.value = books_sheet.cell(
+                                        serial + 1, 5).value - 1
+                                    details_workbook.save(
+                                        details_file_path)
+                                    books_workbook.save(books_file_path)
+                                    print(
+                                        "\n\n\nSUCCESSFULL !!!!!\n The changes will be reflected in your account \n When you Login Again"
+                                    )
+                                    choice = input(
+                                        "Do You want to continue?(y/n)\n")
+                                    if choice == "n" or choice == "N":
+                                        break
+        elif option == 2:
+            count = 0
+            print("The books issued by you are:\n")
+            for i in range(1, details_sheet.max_row):
+                if (details_sheet.cell(i, 2).value == username):
+                    num = i
+                for j in range(4, details_sheet.max_column):
+                    if (details_sheet.cell(i + 1, j + 1).value is not None):
+                        print(count, ".", details_sheet.cell(
+                            i, j).value, end="\n",)
+                        count = count + 1
         elif option == 3:
             count = 0
             print("The books issued by you are:\n")
@@ -194,44 +206,11 @@ def issue(username: str):
                                             "\n\n\nCONFIRM YOUR LOGIN DETAILS\n"
                                         )
                                         account()
-        elif option == 0:
+        else:
             print(
                 "###### Thank You ######\n\n###### Visit Again #####"
             )
             exit(0)
-        elif option == 4:
-            account()
-        elif option == 2:
-            count = 1
-            print(
-                "The books issued by you are:\n"
-            )
-            for i in range(1, details_sheet.max_row):
-                if (
-                    details_sheet.cell(
-                        i, 2
-                    ).value
-                    == username
-                ):
-                    num = i
-                for j in range(
-                    4, details_sheet.max_column
-                ):
-                    if (
-                        details_sheet.cell(
-                            i + 1, j + 1
-                        ).value
-                        is not None
-                    ):
-                        print(
-                            count,
-                            ".",
-                            details_sheet.cell(
-                                i, j
-                            ).value,
-                            end="\n",
-                        )
-                        count = count + 1
 
 
 try:
