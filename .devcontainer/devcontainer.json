@@ -2,7 +2,6 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "charliermarsh.ruff",
         "donjayamanne.python-environment-manager",
         "eamodio.gitlens",
         "esbenp.prettier-vscode",
