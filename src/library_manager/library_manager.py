@@ -5,11 +5,11 @@ import xlrd
 def account():
     print("###### WELCOME TO BAJRANGDAS CENTRAL LIBRARY ######")
     r = input("\nDo you have an existing account?(y/n)\n")
-    loc = "C:\\SDP Project\\Details.xlsx"
+    loc = "./library_manager/Details.xlsx"
     wb = xlrd.open_workbook(loc)
     sheet = wb.sheet_by_index(0)
     sheet.cell_value(0, 0)
-    loc2 = "C:\\SDP Project\\Books.xlsx"
+    loc2 = "./library_managr/Books.xlsx"
     wb2 = xlrd.open_workbook(loc2)
     sheet2 = wb2.sheet_by_index(0)
     sheet2.cell_value(0, 0)
@@ -19,9 +19,9 @@ def account():
     flag = 0
     if r == "y" or r == "Y":
         user = input("Enter Your Username")
-        passw = input("Enter Your Password")
+        password = input("Enter Your Password")
         for i in range(sheet.nrows):
-            if sheet.cell_value(i, 2) == user and sheet.cell_value(i, 3) == passw:
+            if sheet.cell_value(i, 2) == user and sheet.cell_value(i, 3) == password:
                 """Comment the next 2 lines and add function call when the function issue() is created"""
                 # for k in range(sheet2.nrows):
                 #         print (sheet2.cell_value(k, 0),"  ",sheet2.cell_value(k, 1))
@@ -35,7 +35,7 @@ def account():
                 name = input("Enter Your Name\n")
                 gr = int(input("Enter Your GR Number\n"))
                 user = input("Enter Your Username")
-                passw = input("Enter Your Password")
+                password = input("Enter Your Password")
                 for i in range(sheet.nrows):
                     if sheet.cell_value(i, 2) == user or sheet.cell_value(i, 1) == gr:
                         print(
@@ -52,7 +52,7 @@ def account():
                         c3 = sheetd.cell(n + 1, 3)
                         c3.value = user
                         c4 = sheetd.cell(n + 1, 4)
-                        c4.value = passw
+                        c4.value = password
                         xfile.save(loc)
                         """Comment the next 2 lines and add function call when the function issue() is created """
                 # for k in range(sheet2.nrows):
@@ -86,7 +86,8 @@ def issue(usern):
                 print(sheet2.cell_value(k, 0), "  ", sheet2.cell_value(k, 1))
                 while ch == "y":
                     serial = int(
-                        input("Enter the Serial Number of the book you want to issue:")
+                        input(
+                            "Enter the Serial Number of the book you want to issue:")
                     )
                     # print (ch)
                     if sheet2.cell_value(serial + 1, 5) == 0:
@@ -98,17 +99,20 @@ def issue(usern):
                                 for i in range(sheet.nrows):
                                     if sheet.cell_value(i, 2) == usern:
                                         # n = sheetd.max_column
-                                        c1 = sheetd.cell(i + 1, len(sheetd[i + 1]) + 1)
+                                        c1 = sheetd.cell(
+                                            i + 1, len(sheetd[i + 1]) + 1)
                                         c1.value = sheet2.cell_value(k, 1)
                                         c2 = sheetb.cell(serial + 2, 6)
-                                        c2.value = sheet2.cell_value(serial + 1, 5) - 1
+                                        c2.value = sheet2.cell_value(
+                                            serial + 1, 5) - 1
                                         n = sheetd.max_column
                                         xfile.save(loc)
                                         xfile2.save(loc2)
                                         print(
                                             "\n\n\nSUCCESSFULL !!!!!\n The changes will be reflected in your account \n When you Login Again"
                                         )
-                                        ch = input("Do You want to continue?(y/n)\n")
+                                        ch = input(
+                                            "Do You want to continue?(y/n)\n")
                                         if ch == "n" or ch == "N":
                                             break
                                         elif option == 3:
@@ -119,7 +123,8 @@ def issue(usern):
                                                 num = i
                                             for j in range(4, sheet.ncols):
                                                 if (
-                                                    sheetd.cell(i + 1, j + 1).value
+                                                    sheetd.cell(
+                                                        i + 1, j + 1).value
                                                     is not None
                                                 ):
                                                     print(
@@ -138,7 +143,8 @@ def issue(usern):
                                                         )
                                                     for k in range(sheet2.nrows):
                                                         for j in range(
-                                                            4, len(sheetd[num + 1])
+                                                            4, len(
+                                                                sheetd[num + 1])
                                                         ):
                                                             if (
                                                                 sheet.cell_value(
@@ -171,7 +177,8 @@ def issue(usern):
                                                                     "\nReturn successful"
                                                                 )
                                                                 xfile.save(loc)
-                                                                xfile2.save(loc2)
+                                                                xfile2.save(
+                                                                    loc2)
                                                                 retch = input(
                                                                     "Do you have any books to return ?(y/n)"
                                                                 )
