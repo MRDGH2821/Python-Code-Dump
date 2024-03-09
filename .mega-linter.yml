@@ -33,7 +33,7 @@ SPELL_CSPELL_ANALYZE_FILE_NAMES: false
 PRE_COMMANDS:
   - continue_if_failed: false
     cwd: workspace
-    command: apk update && apk add sdl2-dev py3-pygame
+    command: apk update && apk add sdl2-dev py3-pygame freetype-dev
   - continue_if_failed: false
     cwd: workspace
     command: pip install -r requirements.txt
