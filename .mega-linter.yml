@@ -29,13 +29,14 @@ DISABLE_LINTERS:
 CLEAR_REPORT_FOLDER: true
 
 SPELL_CSPELL_ANALYZE_FILE_NAMES: false
-# PRE_COMMANDS:
-#   # - continue_if_failed: false
-#   #   cwd: workspace
-#   #   command: apt-get install libsdl2-dev
-#   - continue_if_failed: false
-#     cwd: workspace
-#     command: pip install poetry
-#   - continue_if_failed: false
-#     cwd: workspace
-#     command: poetry install
+
+PRE_COMMANDS:
+  - continue_if_failed: false
+    cwd: workspace
+    command: apk update && apk add sdl2-dev py3-pygame
+  - continue_if_failed: false
+    cwd: workspace
+    command: pip install -r requirements.txt
+  # - continue_if_failed: false
+  #   cwd: workspace
+  #   command: poetry install --group dev
