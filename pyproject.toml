@@ -2,7 +2,7 @@
 name = "Python-Code-Dump"
 version = "0.0.0"
 description = "A collection of Python code snippets and scripts"
-dependencies = ["pygame", "easygui", "openpyxl", "xlrd", "pyopengl"]
+dependencies = ["easygui", "openpyxl", "pyopengl"]
 
 [tool.poetry]
 name = "python-code-dump"
