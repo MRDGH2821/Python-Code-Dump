@@ -34,14 +34,14 @@ class Limit:
         return cls._limit
 
     @classmethod
-    def set_limit(cls, limit: int):
-        cls._limit = limit
+    def set_limit(cls, limit: int | str):
+        cls._limit = int(limit)
 
 
 def main():
     max_limit = int(input("Max Limit: "))
     Limit.set_limit(max_limit)
-    products = {}
+    products: dict['str', 'Product'] = {}
 
     def new_product(name: str) -> str:
         product = Product(name)
@@ -61,7 +61,7 @@ def main():
             return f"Product {name} found"
         raise UserLimitExceeded(product)
 
-    def change_limit(limit: int) -> str:
+    def change_limit(limit: str) -> str:
         Limit.set_limit(limit)
         return f"limit updated to {limit}"
     func_map = {
@@ -71,7 +71,7 @@ def main():
         "limit": change_limit,
     }
     num_operations = int(input("Number of Operations: "))
-    for i in range(num_operations):
+    for _ in range(num_operations):
         cmd, arg = input("> ").split()
         try:
             res = func_map[cmd](arg)

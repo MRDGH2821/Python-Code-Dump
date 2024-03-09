@@ -45,7 +45,7 @@ def biggerIsGreater(w: str):
 if __name__ == "__main__":
     file = open(os.environ["OUTPUT_PATH"], "w")
     T = int(input())
-    for T_itr in range(T):
+    for _ in range(T):
         w = input()
         result = biggerIsGreater(w)
         file.write(result + "\n")
