@@ -1,6 +1,6 @@
-from openpyxl import load_workbook
-
 import os
+
+from openpyxl import load_workbook
 
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
