@@ -7,16 +7,8 @@ m1 = 0
 m2 = 0
 m3 = 0
 roll_no = 0
-try:
-    filetest = open("student.txt", "r")
-except FileNotFoundError:
-    print("Existing database file doesn't exist.")
-    print("Creating new file in same location...")
-    sleep(2)
-    os.system("cls")
-    filetest = open("student.txt", "w")
-finally:
-    filetest.close()
+with open('students.txt', 'a+') as f:
+    print("Ensuring that the file exists")
 
 
 def takedata():
@@ -32,79 +24,78 @@ def takedata():
 def writedata():
     """Writes Data into file"""
     # opening file in append as well as write mode.
-    f = open("student.txt", "a+")
-    f.write("\n")  # A precautionary new line
-    lt = takedata()  # calling takedata function
-    for v in lt:  # writing data to file
-        f.write(str(v) + " ")
-        f.close()  # closing file
+    with open("student.txt", "a+") as f:
+        f.write("\n")  # A precautionary new line
+        lt = takedata()  # calling takedata function
+        for v in lt:  # writing data to file
+            f.write(str(v) + " ")
     input("Data entered. Press enter key to continue...")
     menu()  # calling menu function
 
 
 def readall():
     """Reads complete data"""
-    j = open("student.txt", "r")  # opening file
-    lk = j.readlines()  # reading complete data
-    print("{:6} {:4} {:4} {:4} {:4}".format(
-        "Roll no", "Name", "Sub1", "Sub2", "Sub3"))
-    # printing data in formatted form
-    for c in range(len(lk)):
-        try:
-            c1 = lk[c].split()
-            print(
-                "{:^6} {:^4} {:^4} {:^4} {:^4}".format(
-                    c1[0], c1[1], c1[2], c1[3], c1[4]
+    with open("student.txt", "r") as j:  # opening file
+        lk = j.readlines()  # reading complete data
+        print("{:6} {:4} {:4} {:4} {:4}".format(
+            "Roll no", "Name", "Sub1", "Sub2", "Sub3"))
+        # printing data in formatted form
+        for c in range(len(lk)):
+            try:
+                c1 = lk[c].split()
+                print(
+                    "{:^6} {:^4} {:^4} {:^4} {:^4}".format(
+                        c1[0], c1[1], c1[2], c1[3], c1[4]
+                    )
                 )
-            )
-        # This exception was to hide the error which comes up due to empty line
-        # inside the file.
-        except IndexError:
-            continue
-        # This statement does nothing special.
-        # It was used to hide when an exception occurs
-        except Exception:
-            pass
-    j.close()  # closing file
+            # This exception was to hide the error
+            # which comes up due to empty line inside the file.
+            except IndexError:
+                continue
+            # This statement does nothing special.
+            # It was used to hide when an exception occurs
+            except Exception:
+                pass
+
     input("\nPress enter key to continue...")
     menu()  # calling menu function
 
 
 def readspecific():
     """Retrieves specific data from file"""
-    k = open("student.txt", "r")  # opening file
-    g = k.readlines()  # reading complete file
-    roll_no = input("Enter Roll no:")  # Taking roll no as user input
-    flag = 0  # flag to denote whether data is found or not
-    for h in g:  # looping through data
-        try:
-            """
-            Here, the format of data is - roll no name m1 m2 m3.
-            Hence we need to split the elements of data (read as lines),
-            Find the roll number and
-            display the data associated with the roll number.
-            """
-            i = h.split()
-            if roll_no == i[0]:  # Condition to find roll number
-                # per =(i[1]+i[2]+i[3])/3
-                # Formatting output
-                print(
-                    "{}\n{}\n{}\n{}\n{}".format(
-                        "Roll no:" + i[0],
-                        "Name:" + i[1],
-                        "Sub1:" + i[2],
-                        "Sub2:" + i[3],
-                        "Sub3:" + i[4],
+    with open("student.txt", "r") as k:  # opening file
+        g = k.readlines()  # reading complete file
+        roll_no = input("Enter Roll no:")  # Taking roll no as user input
+        flag = 0  # flag to denote whether data is found or not
+        for h in g:  # looping through data
+            try:
+                """
+                Here, the format of data is - roll no name m1 m2 m3.
+                Hence we need to split the elements of data (read as lines),
+                Find the roll number and
+                display the data associated with the roll number.
+                """
+                i = h.split()
+                if roll_no == i[0]:  # Condition to find roll number
+                    # per =(i[1]+i[2]+i[3])/3
+                    # Formatting output
+                    print(
+                        "{}\n{}\n{}\n{}\n{}".format(
+                            "Roll no:" + i[0],
+                            "Name:" + i[1],
+                            "Sub1:" + i[2],
+                            "Sub2:" + i[3],
+                            "Sub3:" + i[4],
+                        )
                     )
-                )
-                flag = 1  # flagging as data found
-        except IndexError:
-            # This error comes when a list of empty line is accessed using
-            # index slicing. Empty line create empty list
-            # this error is hidden using continue statement.
-            continue
-        if flag == 0:
-            print("Roll no not found")
+                    flag = 1  # flagging as data found
+            except IndexError:
+                # This error comes when a list of empty line is accessed using
+                # index slicing. Empty line create empty list
+                # this error is hidden using continue statement.
+                continue
+            if flag == 0:
+                print("Roll no not found")
     k.close()  # Closing file
     input("\nPress enter key to continue...")
     menu()
@@ -113,35 +104,35 @@ def readspecific():
 def deletedata():
     """Deletes data of specified roll number"""
     # opening file
-    data = open("student.txt", "r")
-    j = data.readlines()  # Reading complete data
-    roll_no = input("Enter Roll no:")  # Taking roll number as input
-    l2 = open("temp.txt", "w")  # Opening a temporary file to store data
     flag = 0  # flag to denote whether data is found or not
-    for h in range(len(j)):
-        """
-        Here, the format of data is - Roll no name m1 m2 m3.
-        Hence we need to split the elements of data (read as lines),
-        find the roll number and
-        delete the data associated with the roll number.
-        """
-        try:
-            i = j[h].split()
-            if roll_no == i[0]:  # Condition to find roll number
-                del j[h]  # deleting data
-                l2.writelines(j)  # writing leftover data to temp file
-                flag = 1  # flagging as data found
-                break  # Coming out of loop after the data is deleted
-            else:
-                # Raise LookupError because data wasn't found
-                raise LookupError
-        except IndexError:
-            # This error comes when a list of empty line is accessed using
-            # index slicing. Empty line create empty list
-            continue  # this error is hidden using continue statement.
-        except LookupError:
-            flag = 0  # flagging as data not found
-        # Flag checker to check if data deleted or not
+    with open("student.txt", "r") as data:
+        j = data.readlines()  # Reading complete data
+        roll_no = input("Enter Roll no:")  # Taking roll number as input
+        l2 = open("temp.txt", "w")  # Opening a temporary file to store data
+        for h in range(len(j)):
+            """
+            Here, the format of data is - Roll no name m1 m2 m3.
+            Hence we need to split the elements of data (read as lines),
+            find the roll number and
+            delete the data associated with the roll number.
+            """
+            try:
+                i = j[h].split()
+                if roll_no == i[0]:  # Condition to find roll number
+                    del j[h]  # deleting data
+                    l2.writelines(j)  # writing leftover data to temp file
+                    flag = 1  # flagging as data found
+                    break  # Coming out of loop after the data is deleted
+                else:
+                    # Raise LookupError because data wasn't found
+                    raise LookupError
+            except IndexError:
+                # This error comes when a list of empty line is accessed using
+                # index slicing. Empty line create empty list
+                continue  # this error is hidden using continue statement.
+            except LookupError:
+                flag = 0  # flagging as data not found
+    # Flag checker to check if data deleted or not
     if flag == 0:
         print("Record not found")
     elif flag == 1:
