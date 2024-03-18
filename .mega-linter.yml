@@ -31,9 +31,15 @@ CLEAR_REPORT_FOLDER: true
 SPELL_CSPELL_ANALYZE_FILE_NAMES: false
 
 PRE_COMMANDS:
-  - command: cd $GITHUB_WORKSPACE && pip install .
+  - command: cd /tmp/lint && pip install .
     venv: mypy
-  - command: cd $GITHUB_WORKSPACE && pip install .
+    cwd: workspace
+    continue_if_failed: false
+  - command: cd /tmp/lint && pip install .
     venv: pyright
-  - command: cd $GITHUB_WORKSPACE && pip install .
+    cwd: workspace
+    continue_if_failed: false
+  - command: cd /tmp/lint && pip install .
     venv: pylint
+    cwd: workspace
+    continue_if_failed: false
