@@ -1,5 +1,6 @@
 {
   "recommendations": [
+    "adam-bender.commit-message-editor",
     "charliermarsh.ruff",
     "donjayamanne.python-environment-manager",
     "eamodio.gitlens",
