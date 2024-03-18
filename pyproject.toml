@@ -68,3 +68,4 @@ quote-style = "double"
 [tool.ruff.lint]
 fixable = ["ALL"]
 select = ["ALL"]
+ignore = ["T201", "INP001"]
