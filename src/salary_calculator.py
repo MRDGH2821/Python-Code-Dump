@@ -1,5 +1,8 @@
+"""Salary Calculator."""
+
 sales = int(input("Enter total sales:"))
-if sales >= 100000:
+target_sales = 100000
+if sales >= target_sales:
     basic = 4000
     hra = basic / 10
     da = basic * (11 / 10)
