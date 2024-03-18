@@ -31,9 +31,9 @@ CLEAR_REPORT_FOLDER: true
 SPELL_CSPELL_ANALYZE_FILE_NAMES: false
 
 PRE_COMMANDS:
-  - command: pip install poetry && cd $GITHUB_WORKSPACE && poetry install
+  - command: cd $GITHUB_WORKSPACE && pip install .
     venv: mypy
-  - command: pip install poetry && cd $GITHUB_WORKSPACE && poetry install
+  - command: cd $GITHUB_WORKSPACE && pip install .
     venv: pyright
-  - command: pip install poetry && cd $GITHUB_WORKSPACE && poetry install
+  - command: cd $GITHUB_WORKSPACE && pip install .
     venv: pylint

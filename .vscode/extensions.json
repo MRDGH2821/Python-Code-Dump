@@ -1,13 +1,12 @@
 {
   "recommendations": [
+    "charliermarsh.ruff",
     "donjayamanne.python-environment-manager",
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
     "joshbolduc.commitlint",
     "michaelcurrin.auto-commit-msg",
-    "ms-python.autopep8",
     "ms-python.debugpy",
-    "ms-python.flake8",
     "ms-python.python",
     "ms-python.vscode-pylance",
     "njpwerner.autodocstring",
