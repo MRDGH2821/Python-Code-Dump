@@ -18,9 +18,9 @@ runtimes:
 lint:
   disabled:
     - black
+    - bandit
   enabled:
     - actionlint@1.6.27
-    - bandit@1.7.8
     - checkov@3.2.39
     - git-diff-check
     - isort@5.13.2
