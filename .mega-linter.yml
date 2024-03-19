@@ -43,3 +43,7 @@ PRE_COMMANDS:
     venv: pylint
     cwd: workspace
     continue_if_failed: false
+  - command: cd ${GITHUB_WORKSPACE:-$DEFAULT_WORKSPACE} && pip install .
+    venv: pyright
+    cwd: workspace
+    continue_if_failed: false
