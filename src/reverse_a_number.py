@@ -1,6 +1,4 @@
-"""
-Number reverse
-"""
+"""Reverse a number."""
 
 a = int(input("Enter number: "))
 rev = 0

@@ -1,13 +1,14 @@
-a = int(input("Enter a number:"))
-b = a
-flag = 0
-for x in range(2, b):
-    if a % x == 0:
+"""Prime number checker."""
+
+number = int(input("Enter a number: "))
+flag = 1
+for x in range(2, number):
+    if number % x == 0:
         flag = 1
         break
     else:
         flag = 0
 if flag == 0:
-    print(b, "is prime")
+    print(number, "is prime")
 else:
-    print(b, "is not prime")
+    print(number, "is not prime")

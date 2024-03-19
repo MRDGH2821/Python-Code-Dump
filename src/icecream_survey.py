@@ -1,3 +1,8 @@
+"""Icecream Survey.
+
+Takes a survey of icecream flavors & displays selected flavor.
+"""
+
 import sys
 
 from easygui import ccbox, choicebox, msgbox
