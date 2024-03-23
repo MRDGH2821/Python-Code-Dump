@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 import sys
 
@@ -5,11 +7,13 @@ from openpyxl import load_workbook
 
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
+
 details_file_path = f"{current_directory}/Details.xlsx"
 books_file_path = f"{current_directory}/Books.xlsx"
 
 
 def find_user(username: str):
+    """Find a user by username."""
     details_workbook = load_workbook(details_file_path)
     details_sheet = details_workbook[details_workbook.sheetnames[0]]
 
@@ -21,12 +25,13 @@ def find_user(username: str):
 
 
 def account():
+    """Menu of program."""
     print("###### WELCOME TO BAJRANGDAS CENTRAL LIBRARY ######")
     choice = input("\nDo you have an existing account?(y/n): ")
     details_workbook = load_workbook(details_file_path)
     details_sheet = details_workbook[details_workbook.sheetnames[0]]
 
-    if choice == "y" or choice == "Y":
+    if choice in ("y", "Y"):
         print("\nUser login")
         username = input("Enter Your Username: ")
         password = input("Enter Your Password: ")
@@ -38,11 +43,13 @@ def account():
             if username_value == username and password_value == password:
                 issue(username)
             else:
-                raise ValueError("Invalid Username or Password.")
+                msg = "Invalid Username or Password."
+                raise ValueError(msg)
         else:
-            raise ValueError("Unknown Username or Password. Please register.")
+            msg = "Unknown Username or Password. Please register."
+            raise ValueError(msg)
 
-    elif choice == "n" or choice == "N":
+    elif choice in ("n", "N"):
         print("\nUser Registration")
         name = input("Enter Your Name: ")
         gr_number = int(input("Enter Your GR Number: "))
@@ -56,9 +63,8 @@ def account():
             password_value = i[3].value
 
             if username_value == username or gr_number_value == gr_number:
-                raise ValueError(
-                    "USERNAME ALREADY TAKEN or Duplicate GR Number\nTRY AGAIN",
-                )
+                msg = "USERNAME ALREADY TAKEN or Duplicate GR Number\nTRY AGAIN"
+                raise ValueError(msg)
 
         else:
             details_sheet.append([name, gr_number, username, password])
@@ -68,6 +74,7 @@ def account():
 
 
 def issue(username: str):
+    """Issue a book."""
     books_workbook = load_workbook(books_file_path)
     books_sheet = books_workbook[books_workbook.sheetnames[0]]
 
@@ -114,7 +121,7 @@ def issue(username: str):
                                         "\n\n\nSUCCESSFULL !!!!!\n The changes will be reflected in your account \n When you Login Again",
                                     )
                                     choice = input("Do You want to continue?(y/n)\n")
-                                    if choice == "n" or choice == "N":
+                                    if choice in ("n", "N"):
                                         break
         elif option == 2:
             count = 0

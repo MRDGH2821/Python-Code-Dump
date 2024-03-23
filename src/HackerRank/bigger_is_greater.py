@@ -3,13 +3,13 @@
 https://www.hackerrank.com/challenges/bigger-is-greater/problem
 """
 
-# from copy import deepcopy as dpcpy
+# from copy import deepcopy as dpcpy  # noqa: ERA001
 import os
 
 # Complete the biggerIsGreater function below.
 
 
-def biggerIsGreater(w: str):  # noqa: N802
+def biggerIsGreater(w: str):  # noqa: N802, ANN201
     """Return the next lexicographically greater word."""
     new_word = list(w[::-1])
     i = len(new_word) - 2
@@ -33,7 +33,7 @@ def biggerIsGreater(w: str):  # noqa: N802
         new = "".join(new_word[::-1])
         if new > w:
             return new
-        else:
+        else:  # noqa: RET505
             i = i - 1
     return "no answer"
 
