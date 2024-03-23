@@ -1,10 +1,15 @@
+"""Products of elements of a list."""
+
+from __future__ import annotations
+
 from random import randint
 
 random_numbers = [randint(1, 50) for _ in range(10)]
 print(random_numbers)
 
 
-def multiply_list_elements(g: list["int"]):
+def multiply_list_elements(g: list[int]) -> int:
+    """Return the product of all elements of a list."""
     prd = 1
     for d in g:
         prd = prd * d

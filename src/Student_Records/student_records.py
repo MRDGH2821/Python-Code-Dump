@@ -1,4 +1,13 @@
+"""Student Records.
+
+Keeps a record of class students.
+Records consist of student's name, roll number, and marks in 3 subjects.
+"""
+
+from __future__ import annotations
+
 import os
+from pathlib import Path
 from time import sleep
 
 # Initialising variables
@@ -7,12 +16,12 @@ m1 = 0
 m2 = 0
 m3 = 0
 roll_no = 0
-with open('students.txt', 'a+') as f:
+with Path("students.txt").open("a+") as f:
     print("Ensuring that the file exists")
 
 
-def takedata():
-    """Takes data from user"""
+def takedata() -> list[int | str]:
+    """Take data from user."""
     name = str(input("Enter Name:"))
     m1 = int(input("Enter marks out of 100 in subject 1:"))
     m2 = int(input("Enter marks out of 100 in subject 2:"))
@@ -21,10 +30,10 @@ def takedata():
     return [roll_no, name, m1, m2, m3]
 
 
-def writedata():
-    """Writes Data into file"""
+def writedata() -> None:
+    """Write Data into file."""
     # opening file in append as well as write mode.
-    with open("student.txt", "a+") as f:
+    with Path("student.txt").open("a+") as f:
         f.write("\n")  # A precautionary new line
         lt = takedata()  # calling takedata function
         for v in lt:  # writing data to file
@@ -33,20 +42,25 @@ def writedata():
     menu()  # calling menu function
 
 
-def readall():
-    """Reads complete data"""
-    with open("student.txt", "r") as j:  # opening file
+def readall() -> None:
+    """Read complete data."""
+    with Path("student.txt").open() as j:  # opening file
         lk = j.readlines()  # reading complete data
-        print("{:6} {:4} {:4} {:4} {:4}".format(
-            "Roll no", "Name", "Sub1", "Sub2", "Sub3"))
+        print(
+            "{:6} {:4} {:4} {:4} {:4}".format(
+                "Roll no",
+                "Name",
+                "Sub1",
+                "Sub2",
+                "Sub3",
+            ),
+        )
         # printing data in formatted form
         for c in range(len(lk)):
             try:
                 c1 = lk[c].split()
                 print(
-                    "{:^6} {:^4} {:^4} {:^4} {:^4}".format(
-                        c1[0], c1[1], c1[2], c1[3], c1[4]
-                    )
+                    f"{c1[0]:^6} {c1[1]:^4} {c1[2]:^4} {c1[3]:^4} {c1[4]:^4}",
                 )
             # This exception was to hide the error
             # which comes up due to empty line inside the file.
@@ -54,16 +68,16 @@ def readall():
                 continue
             # This statement does nothing special.
             # It was used to hide when an exception occurs
-            except Exception:
-                pass
+            # except Exception:
+            #     log(level="INFO", msg="Exception occurred")
 
     input("\nPress enter key to continue...")
     menu()  # calling menu function
 
 
-def readspecific():
-    """Retrieves specific data from file"""
-    with open("student.txt", "r") as k:  # opening file
+def readspecific() -> None:
+    """Retrieve specific data from file."""
+    with Path("student.txt").open() as k:  # opening file
         g = k.readlines()  # reading complete file
         roll_no = input("Enter Roll no:")  # Taking roll no as user input
         flag = 0  # flag to denote whether data is found or not
@@ -86,7 +100,7 @@ def readspecific():
                             "Sub1:" + i[2],
                             "Sub2:" + i[3],
                             "Sub3:" + i[4],
-                        )
+                        ),
                     )
                     flag = 1  # flagging as data found
             except IndexError:
@@ -101,37 +115,51 @@ def readspecific():
     menu()
 
 
-def deletedata():
-    """Deletes data of specified roll number"""
-    # opening file
-    flag = 0  # flag to denote whether data is found or not
-    with open("student.txt", "r") as data:
-        j = data.readlines()  # Reading complete data
-        roll_no = input("Enter Roll no:")  # Taking roll number as input
-        l2 = open("temp.txt", "w")  # Opening a temporary file to store data
-        for h in range(len(j)):
-            """
-            Here, the format of data is - Roll no name m1 m2 m3.
-            Hence we need to split the elements of data (read as lines),
-            find the roll number and
-            delete the data associated with the roll number.
-            """
-            try:
-                i = j[h].split()
-                if roll_no == i[0]:  # Condition to find roll number
-                    del j[h]  # deleting data
-                    l2.writelines(j)  # writing leftover data to temp file
-                    flag = 1  # flagging as data found
-                    break  # Coming out of loop after the data is deleted
-                else:
-                    # Raise LookupError because data wasn't found
-                    raise LookupError
-            except IndexError:
-                # This error comes when a list of empty line is accessed using
-                # index slicing. Empty line create empty list
-                continue  # this error is hidden using continue statement.
-            except LookupError:
-                flag = 0  # flagging as data not found
+def deletedata() -> None:
+    """Delete data of specified roll number."""
+    # flag to denote whether data is found or not
+    flag = 0
+    with Path("student.txt").open() as data:
+        # Reading complete data
+        j = data.readlines()
+
+        # Taking roll number as input
+        roll_no = input("Enter Roll no:")
+
+        # Opening a temporary file to store data
+        with Path("temp.txt").open("w") as l2:
+            for h in range(len(j)):
+                """
+                Here, the format of data is - Roll no name m1 m2 m3.
+                Hence we need to split the elements of data (read as lines),
+                find the roll number and
+                delete the data associated with the roll number.
+                """
+                if flag == 1:
+                    # Coming out of loop after the data is deleted
+                    break
+                try:
+                    i = j[h].split()
+                    # Condition to find roll number
+                    if roll_no == i[0]:
+                        # deleting data
+                        del j[h]
+                        # writing leftover data to temp file
+                        l2.writelines(j)
+                        # flagging as data found
+                        flag = 1
+
+                    else:
+                        # Raise LookupError because data wasn't found
+                        raise LookupError
+                except IndexError:
+                    # This error comes when a list of empty line is accessed using
+                    # index slicing. Empty line create empty list
+                    # this error is hidden using continue statement.
+                    continue
+                except LookupError:
+                    # flagging as data not found
+                    flag = 0
     # Flag checker to check if data deleted or not
     if flag == 0:
         print("Record not found")
@@ -140,28 +168,26 @@ def deletedata():
         # closing files
     data.close()
     l2.close()
-    os.remove("student.txt")  # deleting the old file
+    # deleting the old file
+    Path("student.txt").unlink()
     # renaming temp file to original file name
-    os.rename("temp.txt", "student.txt")
+    Path("temp.txt").rename("student.txt")
     input("\nPress enter key to continue...")
     menu()
 
 
-def backup():
-    """Backups the data file"""
-    f = open("student.txt", "r")  # Opening data file
-    g = open("student bkp.txt", "w")  # Opening backup file
-    # Copying contents of original file into backup file
-    g.writelines(f.readlines())
-    # closing files
-    f.close()
-    g.close()
+def backup() -> None:
+    """Back up the data file."""
+    with Path("student.txt").open() as f, Path("student bkp.txt").open("w") as g:
+        # Copying contents of original file into backup file
+        g.writelines(f.readlines())
+
     print("Backup Completed!")
     sleep(2)  # delays execution for 2 seconds
 
 
-def menu():
-    """This is menu function.It displays the options"""
+def menu() -> None:
+    """Show menu."""
     backup()
     os.system("cls")
     print("\nMenu:")
@@ -183,11 +209,11 @@ def menu():
             backup()
         elif m == 1:
             writedata()
-        elif m == 2:
+        elif m == 2:  # noqa: PLR2004
             readall()
-        elif m == 3:
+        elif m == 3:  # noqa: PLR2004
             readspecific()
-        elif m == 4:
+        elif m == 4:  # noqa: PLR2004
             deletedata()
         else:
             # Raises ValueError as the input received is not from
@@ -204,7 +230,7 @@ print(
     "\n{:^50}\n\n\n{:^50}".format(
         "Student Records",
         "Project made by: MRDGH2821",
-    )
+    ),
 )
 sleep(3)
 print("\n\n\n")

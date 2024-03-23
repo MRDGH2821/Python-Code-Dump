@@ -1,4 +1,5 @@
 import os
+import sys
 
 from openpyxl import load_workbook
 
@@ -42,7 +43,6 @@ def account():
             raise ValueError("Unknown Username or Password. Please register.")
 
     elif choice == "n" or choice == "N":
-
         print("\nUser Registration")
         name = input("Enter Your Name: ")
         gr_number = int(input("Enter Your GR Number: "))
@@ -57,7 +57,8 @@ def account():
 
             if username_value == username or gr_number_value == gr_number:
                 raise ValueError(
-                    "USERNAME ALREADY TAKEN or Duplicate GR Number\nTRY AGAIN")
+                    "USERNAME ALREADY TAKEN or Duplicate GR Number\nTRY AGAIN",
+                )
 
         else:
             details_sheet.append([name, gr_number, username, password])
@@ -88,7 +89,8 @@ def issue(username: str):
                 print(row[0].value, "  ", row[1].value)
             while choice == "y":
                 serial = int(
-                    input("Enter the Serial Number of the book you want to issue:"))
+                    input("Enter the Serial Number of the book you want to issue:"),
+                )
                 # print (ch)
                 if books_sheet.cell(serial + 1, 5).value == 0:
                     print("No Copies Left\n")
@@ -100,32 +102,34 @@ def issue(username: str):
                                 if details_sheet.cell(i, 2).value == username:
                                     # n = sheetd.max_column
                                     c1 = details_sheet.cell(
-                                        i + 1, len(details_sheet[i + 1]) + 1)
-                                    c1.value = books_sheet.cell(
-                                        k, 1).value
+                                        i + 1,
+                                        len(details_sheet[i + 1]) + 1,
+                                    )
+                                    c1.value = books_sheet.cell(k, 1).value
                                     c2 = books_sheet.cell(serial + 2, 6)
-                                    c2.value = books_sheet.cell(
-                                        serial + 1, 5).value - 1
-                                    details_workbook.save(
-                                        details_file_path)
+                                    c2.value = books_sheet.cell(serial + 1, 5).value - 1
+                                    details_workbook.save(details_file_path)
                                     books_workbook.save(books_file_path)
                                     print(
-                                        "\n\n\nSUCCESSFULL !!!!!\n The changes will be reflected in your account \n When you Login Again"
+                                        "\n\n\nSUCCESSFULL !!!!!\n The changes will be reflected in your account \n When you Login Again",
                                     )
-                                    choice = input(
-                                        "Do You want to continue?(y/n)\n")
+                                    choice = input("Do You want to continue?(y/n)\n")
                                     if choice == "n" or choice == "N":
                                         break
         elif option == 2:
             count = 0
             print("The books issued by you are:\n")
             for i in range(1, details_sheet.max_row):
-                if (details_sheet.cell(i, 2).value == username):
+                if details_sheet.cell(i, 2).value == username:
                     num = i
                 for j in range(4, details_sheet.max_column):
-                    if (details_sheet.cell(i + 1, j + 1).value is not None):
-                        print(count, ".", details_sheet.cell(
-                            i, j).value, end="\n",)
+                    if details_sheet.cell(i + 1, j + 1).value is not None:
+                        print(
+                            count,
+                            ".",
+                            details_sheet.cell(i, j).value,
+                            end="\n",
+                        )
                         count = count + 1
         elif option == 3:
             count = 0
@@ -135,82 +139,59 @@ def issue(username: str):
                 if details_sheet.cell(i, 2).value == username:
                     num = i
                 for j in range(4, details_sheet.max_column):
-                    if (
-                        details_sheet.cell(
-                            i + 1, j + 1).value
-                        is not None
-                    ):
+                    if details_sheet.cell(i + 1, j + 1).value is not None:
                         print(
                             count,
                             ".",
-                            details_sheet.cell(
-                                i, j).value,
+                            details_sheet.cell(i, j).value,
                             end="\n",
                         )
                         count = count + 1
                         return_choice = "y"
-                        for i in range(1, details_sheet.max_column - 4):
+                        for _ in range(1, details_sheet.max_column - 4):
                             return_qty = int(
-                                input(
-                                    "Enter the number You want to return:"
-                                )
+                                input("Enter the number You want to return:"),
                             )
                             for k in range(1, books_sheet.max_row):
-                                for j in range(
-                                    4, len(
-                                        details_sheet[num + 1])
-                                ):
+                                for _j in range(4, len(details_sheet[num + 1])):
                                     if (
                                         details_sheet.cell(
-                                            num, 4 + return_qty - 1
+                                            num,
+                                            4 + return_qty - 1,
                                         ).value
                                         != ""
                                     ):
                                         break
                                     else:
                                         return_qty = return_qty + 1
-                                    if books_sheet.cell(
-                                        k, 1
-                                    ).value == details_sheet.cell(
-                                        num, 4 + return_qty - 1
-                                    ).value:
-                                        c = books_sheet.cell(
-                                            k + 1, 6
-                                        )
-                                        c.value = (
-                                            int(books_sheet.cell(k, 5).value) + 1)
+                                    if (
+                                        books_sheet.cell(k, 1).value
+                                        == details_sheet.cell(
+                                            num,
+                                            4 + return_qty - 1,
+                                        ).value
+                                    ):
+                                        c = books_sheet.cell(k + 1, 6)
+                                        c.value = int(books_sheet.cell(k, 5).value) + 1
                                         # sheetd .delete_cells(num+1,ret+4)
                                         details_sheet.cell(
-                                            num + 1, return_qty + 4
+                                            num + 1,
+                                            return_qty + 4,
                                         ).value = None
-                                        print(
-                                            "\nReturn successful"
-                                        )
-                                        details_workbook.save(
-                                            details_file_path)
-                                        books_workbook.save(
-                                            books_file_path)
+                                        print("\nReturn successful")
+                                        details_workbook.save(details_file_path)
+                                        books_workbook.save(books_file_path)
                                         return_choice = input(
-                                            "Do you have any books to return ?(y/n)"
+                                            "Do you have any books to return ?(y/n)",
                                         )
-                                    if (
-                                        return_choice == "n"
-                                        or return_choice == "N"
-                                    ):
+                                    if return_choice in ("n", "N"):
                                         break
-                                    elif (
-                                        return_choice == "y"
-                                        or return_choice == "Y"
-                                    ):
-                                        print(
-                                            "\n\n\nCONFIRM YOUR LOGIN DETAILS\n"
-                                        )
+                                    elif return_choice in ("y", "Y"):
+                                        print("\n\n\nCONFIRM YOUR LOGIN DETAILS\n")
                                         account()
         else:
-            print(
-                "###### Thank You ######\n\n###### Visit Again #####"
-            )
-            exit(0)
+            print("###### Thank You ######\n\n###### Visit Again #####")
+            sys.exit(0)
 
 
 try:

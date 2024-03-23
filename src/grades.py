@@ -1,11 +1,13 @@
+"""Grade Calculator."""
+
 marks = int(input("Enter the marks of the student: "))
-if marks >= 91 and marks <= 100:
+if marks in range(91, 101):
     print("Grade A")
-elif marks >= 81 and marks <= 90:
+elif marks in range(81, 91):
     print("Grade B")
-elif marks >= 71 and marks <= 80:
+elif marks in range(71, 81):
     print("Grade C")
-elif marks >= 61 and marks <= 70:
+elif marks in range(61, 71):
     print("Grade D")
 else:
     print("Grade F")

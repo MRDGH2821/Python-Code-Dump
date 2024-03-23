@@ -1,3 +1,5 @@
+"""Faulty email checker."""
+
 email_id = [str(input("Enter Email ID:")) for _ in range(10)]
 # loop to repeat the cycle of checking and deleting.
 for _ in range(len(email_id)):

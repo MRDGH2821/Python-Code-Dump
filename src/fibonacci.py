@@ -1,3 +1,5 @@
+"""Fibonacci sequence printer."""
+
 limit = int(input("Enter the limit:"))
 fibonacci_sequence = [1, 1]
 for x in range(limit):

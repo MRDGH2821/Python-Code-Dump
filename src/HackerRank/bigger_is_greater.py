@@ -1,5 +1,5 @@
-"""
-HackerRank problem: Bigger is Greater
+"""HackerRank problem: Bigger is Greater.
+
 https://www.hackerrank.com/challenges/bigger-is-greater/problem
 """
 
@@ -9,9 +9,10 @@ import os
 # Complete the biggerIsGreater function below.
 
 
-def biggerIsGreater(w: str):
-    newWrd = list(w[::-1])
-    i = len(newWrd) - 2
+def biggerIsGreater(w: str):  # noqa: N802
+    """Return the next lexicographically greater word."""
+    new_word = list(w[::-1])
+    i = len(new_word) - 2
     new = ""
     """
     for i in range(len(newWrd)-1):
@@ -28,14 +29,13 @@ def biggerIsGreater(w: str):
             flag=1
     """
     while i > -1:
-        newWrd[i], newWrd[i + 1] = newWrd[i + 1], newWrd[i]
-        new = "".join(newWrd[::-1])
+        new_word[i], new_word[i + 1] = new_word[i + 1], new_word[i]
+        new = "".join(new_word[::-1])
         if new > w:
             return new
         else:
             i = i - 1
-    else:
-        return "no answer"
+    return "no answer"
 
 
 """
@@ -43,7 +43,7 @@ def biggerIsGreater(w: str):
         return "no answer"
 """
 if __name__ == "__main__":
-    file = open(os.environ["OUTPUT_PATH"], "w")
+    file = open(os.environ["OUTPUT_PATH"], "w")  # noqa: PTH123, SIM115
     T = int(input())
     for _ in range(T):
         w = input()
