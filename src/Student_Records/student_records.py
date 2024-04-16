@@ -221,8 +221,8 @@ def menu() -> None:
         elif m == 4:  # noqa: PLR2004
             deletedata()
         else:
-            # Raises ValueError as the input received is not from
-            # [-1,0,1,2,3,4]
+            # Raises ValueError as the input received
+            # is not from [-1,0,1,2,3,4]
             raise ValueError  # noqa: TRY301
     except ValueError:
         print("Invalid choice")
