@@ -2,7 +2,7 @@
 name = "Python-Code-Dump"
 version = "0.0.0"
 description = "A collection of Python code snippets and scripts"
-dependencies = ["easygui>=0.98.3", "openpyxl>=3.1.2", "pyopengl>=3.1.7"]
+dependencies = ["easygui>=0.98.3", "openpyxl>=3.1.2"]
 readme = "README.md"
 requires-python = ">=3.8"
 
