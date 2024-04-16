@@ -7,6 +7,7 @@ Records consist of student's name, roll number, and marks in 3 subjects.
 from __future__ import annotations
 
 import os
+import sys
 from pathlib import Path
 from time import sleep
 
@@ -16,7 +17,7 @@ m1 = 0
 m2 = 0
 m3 = 0
 roll_no = 0
-with Path("students.txt").open("a+") as f:
+with Path("student.txt").open("a+") as f:
     print("Ensuring that the file exists")
 
 
@@ -32,7 +33,7 @@ def remove_blank_lines(filename: str) -> None:
 
 
 # Usage
-remove_blank_lines("students.txt")
+remove_blank_lines("student.txt")
 
 
 def takedata() -> list[int | str]:
