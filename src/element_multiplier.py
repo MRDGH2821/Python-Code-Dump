@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from random import randint
+from secrets import randbelow
 
-random_numbers = [randint(1, 50) for _ in range(10)]
+random_numbers = [randbelow(50) for _ in range(10)]
 print(random_numbers)
 
 
