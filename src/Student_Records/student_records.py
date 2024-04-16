@@ -20,6 +20,21 @@ with Path("students.txt").open("a+") as f:
     print("Ensuring that the file exists")
 
 
+def remove_blank_lines(filename: str) -> None:
+    """Remove blank lines from a file."""
+    with Path(filename).open() as in_file:
+        lines = in_file.readlines()
+
+    non_blank_lines = [line for line in lines if line.strip()]
+
+    with Path(filename).open("w") as out_file:
+        out_file.writelines(non_blank_lines)
+
+
+# Usage
+remove_blank_lines("students.txt")
+
+
 def takedata() -> list[int | str]:
     """Take data from user."""
     name = str(input("Enter Name:"))
@@ -57,19 +72,10 @@ def readall() -> None:
         )
         # printing data in formatted form
         for c in range(len(lk)):
-            try:
-                c1 = lk[c].split()
-                print(
-                    f"{c1[0]:^6} {c1[1]:^4} {c1[2]:^4} {c1[3]:^4} {c1[4]:^4}",
-                )
-            # This exception was to hide the error
-            # which comes up due to empty line inside the file.
-            except IndexError:
-                continue
-            # This statement does nothing special.
-            # It was used to hide when an exception occurs
-            # except Exception:
-            #     log(level="INFO", msg="Exception occurred")
+            c1 = lk[c].split()
+            print(
+                f"{c1[0]:^6} {c1[1]:^4} {c1[2]:^4} {c1[3]:^4} {c1[4]:^4}",
+            )
 
     input("\nPress enter key to continue...")
     menu()  # calling menu function
