@@ -156,7 +156,7 @@ def deletedata() -> None:
 
                     else:
                         # Raise LookupError because data wasn't found
-                        raise LookupError
+                        raise LookupError  # noqa: TRY301
                 except IndexError:
                     # This error comes when a list of empty line is accessed using
                     # index slicing. Empty line create empty list
@@ -223,7 +223,7 @@ def menu() -> None:
         else:
             # Raises ValueError as the input received is not from
             # [-1,0,1,2,3,4]
-            raise ValueError
+            raise ValueError  # noqa: TRY301
     except ValueError:
         print("Invalid choice")
     except SystemExit:
