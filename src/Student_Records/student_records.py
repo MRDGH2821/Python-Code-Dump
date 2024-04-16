@@ -84,10 +84,10 @@ def readall() -> None:
 def readspecific() -> None:
     """Retrieve specific data from file."""
     with Path("student.txt").open() as k:  # opening file
-        g = k.readlines()  # reading complete file
+        records = k.readlines()  # reading complete file
         roll_no = input("Enter Roll no:")  # Taking roll no as user input
         flag = 0  # flag to denote whether data is found or not
-        for h in g:  # looping through data
+        for record in records:  # looping through data
             try:
                 """
                 Here, the format of data is - roll no name m1 m2 m3.
@@ -95,17 +95,16 @@ def readspecific() -> None:
                 Find the roll number and
                 display the data associated with the roll number.
                 """
-                i = h.split()
-                if roll_no == i[0]:  # Condition to find roll number
-                    # per =(i[1]+i[2]+i[3])/3
+                data = record.split()
+                if roll_no == data[0]:  # Condition to find roll number
                     # Formatting output
                     print(
                         "{}\n{}\n{}\n{}\n{}".format(
-                            "Roll no:" + i[0],
-                            "Name:" + i[1],
-                            "Sub1:" + i[2],
-                            "Sub2:" + i[3],
-                            "Sub3:" + i[4],
+                            "Roll no:" + data[0],
+                            "Name:" + data[1],
+                            "Sub1:" + data[2],
+                            "Sub2:" + data[3],
+                            "Sub3:" + data[4],
                         ),
                     )
                     flag = 1  # flagging as data found
