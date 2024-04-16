@@ -201,7 +201,6 @@ def menu() -> None:
     print("2. See all student records")
     print("3. Find Specific record")
     print("4. Delete specific data")
-    # print("5. Sort data (Will close program after sorting)")
     # i.e. manually backing up data
     print(" - 1. Force Backup data(Will close program after backup) ")
     print("0. Exit")
