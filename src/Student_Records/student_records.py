@@ -209,7 +209,7 @@ def menu() -> None:
     m = int(input("Your Input:"))
     try:
         if m == 0:
-            raise SystemExit  # Raises SystemExit to terminate the program
+            sys.exit()
         elif m == -1:
             backup()
         elif m == 1:
