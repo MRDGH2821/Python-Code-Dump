@@ -6,7 +6,6 @@ Records consist of student's name, roll number, and marks in 3 subjects.
 
 from __future__ import annotations
 
-import os
 import sys
 from pathlib import Path
 from time import sleep
@@ -195,7 +194,7 @@ def backup() -> None:
 def menu() -> None:
     """Show menu."""
     backup()
-    os.system("cls")
+    print("\033c", end="")
     print("\nMenu:")
     print("1. Create student record")
     print("2. See all student records")
