@@ -5,12 +5,12 @@ This program is a library manager that allows users to issue and return books.
 
 from __future__ import annotations
 
-import os
 import sys
+from pathlib import Path
 
 from openpyxl import load_workbook
 
-current_directory = os.path.dirname(os.path.abspath(__file__))
+current_directory = Path(__file__).resolve().parent
 
 
 details_file_path = f"{current_directory}/Details.xlsx"
