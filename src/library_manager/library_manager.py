@@ -24,7 +24,7 @@ def find_user(username: str):
     return None
 
 
-def account():
+def account() -> None:
     """Menu of program."""
     print("###### WELCOME TO BAJRANGDAS CENTRAL LIBRARY ######")
     choice = input("\nDo you have an existing account?(y/n): ")
