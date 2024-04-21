@@ -201,9 +201,4 @@ def issue(username: str):
             sys.exit(0)
 
 
-try:
-    account()
-except Exception as e:
-    print("\n")
-    print(e)
-    print("Please try again later.")
+account()
