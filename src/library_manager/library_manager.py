@@ -1,3 +1,8 @@
+"""Library Manager.
+
+This program is a library manager that allows users to issue and return books.
+"""
+
 from __future__ import annotations
 
 import os
